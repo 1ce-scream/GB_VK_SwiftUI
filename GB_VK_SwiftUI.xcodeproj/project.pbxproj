@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE1349B0279DAE4B00CD424A /* GB_VK_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1349AF279DAE4B00CD424A /* GB_VK_SwiftUIApp.swift */; };
-		FE1349B2279DAE4B00CD424A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1349B1279DAE4B00CD424A /* ContentView.swift */; };
-		FE1349B4279DAE4C00CD424A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE1349B3279DAE4C00CD424A /* Assets.xcassets */; };
-		FE1349B7279DAE4C00CD424A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE1349B6279DAE4C00CD424A /* Preview Assets.xcassets */; };
+		FE134996279C36D200CD424A /* GB_VK_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE134995279C36D200CD424A /* GB_VK_SwiftUIApp.swift */; };
+		FE134998279C36D200CD424A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE134997279C36D200CD424A /* ContentView.swift */; };
+		FE13499A279C36D300CD424A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE134999279C36D300CD424A /* Assets.xcassets */; };
+		FE13499D279C36D300CD424A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE13499C279C36D300CD424A /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FE1349AC279DAE4B00CD424A /* GB_VK_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GB_VK_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FE1349AF279DAE4B00CD424A /* GB_VK_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GB_VK_SwiftUIApp.swift; sourceTree = "<group>"; };
-		FE1349B1279DAE4B00CD424A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		FE1349B3279DAE4C00CD424A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FE1349B6279DAE4C00CD424A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FE134992279C36D200CD424A /* GB_VK_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GB_VK_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE134995279C36D200CD424A /* GB_VK_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GB_VK_SwiftUIApp.swift; sourceTree = "<group>"; };
+		FE134997279C36D200CD424A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FE134999279C36D300CD424A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FE13499C279C36D300CD424A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FE1349A9279DAE4B00CD424A /* Frameworks */ = {
+		FE13498F279C36D200CD424A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -32,37 +32,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FE1349A3279DAE4B00CD424A = {
+		FE134989279C36D200CD424A = {
 			isa = PBXGroup;
 			children = (
-				FE1349AE279DAE4B00CD424A /* GB_VK_SwiftUI */,
-				FE1349AD279DAE4B00CD424A /* Products */,
+				FE134994279C36D200CD424A /* GB_VK_SwiftUI */,
+				FE134993279C36D200CD424A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		FE1349AD279DAE4B00CD424A /* Products */ = {
+		FE134993279C36D200CD424A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FE1349AC279DAE4B00CD424A /* GB_VK_SwiftUI.app */,
+				FE134992279C36D200CD424A /* GB_VK_SwiftUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FE1349AE279DAE4B00CD424A /* GB_VK_SwiftUI */ = {
+		FE134994279C36D200CD424A /* GB_VK_SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				FE1349AF279DAE4B00CD424A /* GB_VK_SwiftUIApp.swift */,
-				FE1349B1279DAE4B00CD424A /* ContentView.swift */,
-				FE1349B3279DAE4C00CD424A /* Assets.xcassets */,
-				FE1349B5279DAE4C00CD424A /* Preview Content */,
+				FE134995279C36D200CD424A /* GB_VK_SwiftUIApp.swift */,
+				FE134997279C36D200CD424A /* ContentView.swift */,
+				FE134999279C36D300CD424A /* Assets.xcassets */,
+				FE13499B279C36D300CD424A /* Preview Content */,
 			);
 			path = GB_VK_SwiftUI;
 			sourceTree = "<group>";
 		};
-		FE1349B5279DAE4C00CD424A /* Preview Content */ = {
+		FE13499B279C36D300CD424A /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				FE1349B6279DAE4C00CD424A /* Preview Assets.xcassets */,
+				FE13499C279C36D300CD424A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -70,13 +70,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FE1349AB279DAE4B00CD424A /* GB_VK_SwiftUI */ = {
+		FE134991279C36D200CD424A /* GB_VK_SwiftUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FE1349BA279DAE4C00CD424A /* Build configuration list for PBXNativeTarget "GB_VK_SwiftUI" */;
+			buildConfigurationList = FE1349A0279C36D300CD424A /* Build configuration list for PBXNativeTarget "GB_VK_SwiftUI" */;
 			buildPhases = (
-				FE1349A8279DAE4B00CD424A /* Sources */,
-				FE1349A9279DAE4B00CD424A /* Frameworks */,
-				FE1349AA279DAE4B00CD424A /* Resources */,
+				FE13498E279C36D200CD424A /* Sources */,
+				FE13498F279C36D200CD424A /* Frameworks */,
+				FE134990279C36D200CD424A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -84,25 +84,25 @@
 			);
 			name = GB_VK_SwiftUI;
 			productName = GB_VK_SwiftUI;
-			productReference = FE1349AC279DAE4B00CD424A /* GB_VK_SwiftUI.app */;
+			productReference = FE134992279C36D200CD424A /* GB_VK_SwiftUI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		FE1349A4279DAE4B00CD424A /* Project object */ = {
+		FE13498A279C36D200CD424A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
-					FE1349AB279DAE4B00CD424A = {
+					FE134991279C36D200CD424A = {
 						CreatedOnToolsVersion = 13.2;
 					};
 				};
 			};
-			buildConfigurationList = FE1349A7279DAE4B00CD424A /* Build configuration list for PBXProject "GB_VK_SwiftUI" */;
+			buildConfigurationList = FE13498D279C36D200CD424A /* Build configuration list for PBXProject "GB_VK_SwiftUI" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,42 +110,42 @@
 				en,
 				Base,
 			);
-			mainGroup = FE1349A3279DAE4B00CD424A;
-			productRefGroup = FE1349AD279DAE4B00CD424A /* Products */;
+			mainGroup = FE134989279C36D200CD424A;
+			productRefGroup = FE134993279C36D200CD424A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FE1349AB279DAE4B00CD424A /* GB_VK_SwiftUI */,
+				FE134991279C36D200CD424A /* GB_VK_SwiftUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FE1349AA279DAE4B00CD424A /* Resources */ = {
+		FE134990279C36D200CD424A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE1349B7279DAE4C00CD424A /* Preview Assets.xcassets in Resources */,
-				FE1349B4279DAE4C00CD424A /* Assets.xcassets in Resources */,
+				FE13499D279C36D300CD424A /* Preview Assets.xcassets in Resources */,
+				FE13499A279C36D300CD424A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FE1349A8279DAE4B00CD424A /* Sources */ = {
+		FE13498E279C36D200CD424A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE1349B2279DAE4B00CD424A /* ContentView.swift in Sources */,
-				FE1349B0279DAE4B00CD424A /* GB_VK_SwiftUIApp.swift in Sources */,
+				FE134998279C36D200CD424A /* ContentView.swift in Sources */,
+				FE134996279C36D200CD424A /* GB_VK_SwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		FE1349B8279DAE4C00CD424A /* Debug */ = {
+		FE13499E279C36D300CD424A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -206,7 +206,7 @@
 			};
 			name = Debug;
 		};
-		FE1349B9279DAE4C00CD424A /* Release */ = {
+		FE13499F279C36D300CD424A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -261,7 +261,7 @@
 			};
 			name = Release;
 		};
-		FE1349BB279DAE4C00CD424A /* Debug */ = {
+		FE1349A1279C36D300CD424A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -290,7 +290,7 @@
 			};
 			name = Debug;
 		};
-		FE1349BC279DAE4C00CD424A /* Release */ = {
+		FE1349A2279C36D300CD424A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -322,25 +322,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FE1349A7279DAE4B00CD424A /* Build configuration list for PBXProject "GB_VK_SwiftUI" */ = {
+		FE13498D279C36D200CD424A /* Build configuration list for PBXProject "GB_VK_SwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FE1349B8279DAE4C00CD424A /* Debug */,
-				FE1349B9279DAE4C00CD424A /* Release */,
+				FE13499E279C36D300CD424A /* Debug */,
+				FE13499F279C36D300CD424A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FE1349BA279DAE4C00CD424A /* Build configuration list for PBXNativeTarget "GB_VK_SwiftUI" */ = {
+		FE1349A0279C36D300CD424A /* Build configuration list for PBXNativeTarget "GB_VK_SwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FE1349BB279DAE4C00CD424A /* Debug */,
-				FE1349BC279DAE4C00CD424A /* Release */,
+				FE1349A1279C36D300CD424A /* Debug */,
+				FE1349A2279C36D300CD424A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = FE1349A4279DAE4B00CD424A /* Project object */;
+	rootObject = FE13498A279C36D200CD424A /* Project object */;
 }

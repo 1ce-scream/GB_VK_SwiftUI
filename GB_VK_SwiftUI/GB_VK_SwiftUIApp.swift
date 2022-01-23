@@ -2,7 +2,7 @@
 //  GB_VK_SwiftUIApp.swift
 //  GB_VK_SwiftUI
 //
-//  Created by Vitaliy Talalay on 23.01.2022.
+//  Created by Vitaliy Talalay on 22.01.2022.
 //
 
 import SwiftUI
