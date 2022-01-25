@@ -11,7 +11,6 @@ import Combine
 struct ContentView: View {
     @State private var login = ""
     @State private var password = ""
-//    @State private var isKeyboardShown = false
     @State private var offset: CGFloat = 0
     
     private let keyboardIsOnPublisher = Publishers.Merge(
@@ -52,50 +51,16 @@ struct ContentView: View {
                             .textFieldStyle(.roundedBorder)
                         HStack() {
                             Button("Sign in", action: didTapSignIn)
-                                .foregroundColor(.white)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 30,
-                                                     style: .continuous)
-                                        .fill(.blue)
-                                )
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 30,
-                                                     style: .continuous)
-                                        .strokeBorder(.white)
-                                )
-                                .buttonStyle(.bordered)
-//                                .buttonBorderShape(.capsule)
+                                .modifier(LoginScreenButtonsViewModifier(
+                                    offset: offset))
                                 .disabled(login.isEmpty || password.isEmpty)
-                                .padding(.bottom, offset)
-                            
                             Button("Register", action: didTapRegister)
-                                .foregroundColor(.white)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 30,
-                                                     style: .continuous)
-                                        .fill(.blue)
-                                )
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 30,
-                                                     style: .continuous)
-                                        .strokeBorder(.white)
-                                )
-                                .buttonStyle(.bordered)
-                                .padding(.bottom, offset)
+                                .modifier(LoginScreenButtonsViewModifier(
+                                    offset: offset))
                             
                         }.onReceive(keyboardIsOnPublisher) { _ in
-                            let height = geometry.size.height
-//                            let bottomInset = UIApplication.shared
-//                                .windows.first?.safeAreaInsets.bottom
-                            let scenes = UIApplication.shared.connectedScenes
-                            let windowScene = scenes.first as? UIWindowScene
-                            let window = windowScene?.windows.first
-                            let bottomInset = window?.safeAreaInsets.bottom
-                            let offsetDivider: CGFloat = 2
-                            
-                            self.offset = (
-                                height - (bottomInset ?? 0)
-                            ) / offsetDivider
+                            self.offset = changeOffsetForKeyboard(
+                                height: geometry.size.height)
                         }
                     }
                     .frame(minWidth: 0,
@@ -119,6 +84,42 @@ struct ContentView: View {
     
     func didTapRegister() {
         print("Register button was tapped")
+    }
+    
+    func changeOffsetForKeyboard(height: CGFloat) -> CGFloat {
+//        let bottomInset = UIApplication.shared
+//            .windows.first?.safeAreaInsets.bottom
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        let bottomInset = window?.safeAreaInsets.bottom
+        let offsetDivider: CGFloat = 2
+        
+        let tmpOffset = (
+            height - (bottomInset ?? 0)
+        ) / offsetDivider
+        
+        return tmpOffset
+    }
+}
+
+struct LoginScreenButtonsViewModifier: ViewModifier {
+    var offset: CGFloat
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(.white)
+            .background(
+                RoundedRectangle(cornerRadius: 30,
+                                 style: .continuous)
+                    .fill(.blue)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 30,
+                                 style: .continuous)
+                    .strokeBorder(.white)
+            )
+            .buttonStyle(.bordered)
+            .padding(.bottom, offset)
     }
 }
 
