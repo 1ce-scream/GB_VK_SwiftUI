@@ -13,6 +13,8 @@
 		FE13499D279C36D300CD424A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE13499C279C36D300CD424A /* Preview Assets.xcassets */; };
 		FEC0D00527A1842300905751 /* UserCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0D00427A1842300905751 /* UserCellView.swift */; };
 		FEC0D00727A1A92B00905751 /* CommunityCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0D00627A1A92B00905751 /* CommunityCellView.swift */; };
+		FEC0D00927A1BC2B00905751 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0D00827A1BC2B00905751 /* ViewModifiers.swift */; };
+		FEC0D00B27A1BCA700905751 /* ViewBuilders.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0D00A27A1BCA700905751 /* ViewBuilders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		FE13499C279C36D300CD424A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FEC0D00427A1842300905751 /* UserCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellView.swift; sourceTree = "<group>"; };
 		FEC0D00627A1A92B00905751 /* CommunityCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellView.swift; sourceTree = "<group>"; };
+		FEC0D00827A1BC2B00905751 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
+		FEC0D00A27A1BCA700905751 /* ViewBuilders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuilders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 				FE134997279C36D200CD424A /* LoginScreenView.swift */,
 				FEC0D00427A1842300905751 /* UserCellView.swift */,
 				FEC0D00627A1A92B00905751 /* CommunityCellView.swift */,
+				FEC0D00827A1BC2B00905751 /* ViewModifiers.swift */,
+				FEC0D00A27A1BCA700905751 /* ViewBuilders.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -151,7 +157,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEC0D00927A1BC2B00905751 /* ViewModifiers.swift in Sources */,
 				FE134998279C36D200CD424A /* LoginScreenView.swift in Sources */,
+				FEC0D00B27A1BCA700905751 /* ViewBuilders.swift in Sources */,
 				FEC0D00527A1842300905751 /* UserCellView.swift in Sources */,
 				FEC0D00727A1A92B00905751 /* CommunityCellView.swift in Sources */,
 				FE134996279C36D200CD424A /* GB_VK_SwiftUIApp.swift in Sources */,

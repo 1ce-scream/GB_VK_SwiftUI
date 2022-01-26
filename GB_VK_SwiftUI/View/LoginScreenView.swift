@@ -9,6 +9,8 @@ import SwiftUI
 import Combine
 
 struct LoginScreenView: View {
+// MARK: - Private properties
+    
     @State private var offset: CGFloat = 0
     @State private var login = ""
     @State private var password = ""
@@ -24,6 +26,8 @@ struct LoginScreenView: View {
             .map { _ in false}
     )
         .removeDuplicates()
+    
+// MARK: - Body
     
     var body: some View {
         ZStack{
@@ -60,8 +64,10 @@ struct LoginScreenView: View {
                   dismissButton: .cancel())
         })
     }
+
+// MARK: - Private functions
     
-    func changeOffsetForKeyboard(height: CGFloat) -> CGFloat {
+    private func changeOffsetForKeyboard(height: CGFloat) -> CGFloat {
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene
         let window = windowScene?.windows.first
@@ -76,45 +82,11 @@ struct LoginScreenView: View {
     }
 }
 
-//MARK: -View Modifiers
+//MARK: - View Modifiers
 
-struct ButtonsViewModifier: ViewModifier {
-    var offset: CGFloat
-    
-    func body(content: Content) -> some View {
-        content
-            .foregroundColor(.white)
-            .background(
-                RoundedRectangle(cornerRadius: 30,
-                                 style: .continuous)
-                    .fill(.blue)
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 30,
-                                 style: .continuous)
-                    .strokeBorder(.white)
-            )
-            .buttonStyle(.bordered)
-            .padding(.bottom, offset)
-    }
-}
 
-struct MainStackViewModifier: ViewModifier {
-    var maxWidth: CGFloat
-    var maxHeight: CGFloat
-    
-    func body(content: Content) -> some View {
-        content
-            .frame(minWidth: 0,
-                   maxWidth: maxWidth,
-                   minHeight: 0,
-                   maxHeight: maxHeight,
-                   alignment: .center)
-            .padding(.top, 120.0)
-    }
-}
 
-// MARK: -Views
+// MARK: - Views
 
 struct LogoView: View {
     var body: some View {
@@ -179,7 +151,7 @@ struct TextFieldsView: View {
     }
 }
 
-// MARK: -Extensions
+// MARK: - Extensions
 
 extension UIApplication {
     func endEditing() {
@@ -191,7 +163,7 @@ extension UIApplication {
 }
 
 
-// MARK: -Previews
+// MARK: - Previews
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

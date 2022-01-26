@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct CommunityCellView: View {
+
+// MARK: - Properties
+    
     let name: String = "Earn your first million"
     let avatarName: String = "group3"
+
+// MARK: - Body
     
     var body: some View {
         HStack {
@@ -24,9 +29,10 @@ struct CommunityCellView: View {
     }
 }
 
-//MARK: -View Modifiers
+//MARK: - View Modifiers
 
-// MARK: -Previews
+
+// MARK: - Previews
 
 struct CommunityCellView_Previews: PreviewProvider {
     static var previews: some View {
