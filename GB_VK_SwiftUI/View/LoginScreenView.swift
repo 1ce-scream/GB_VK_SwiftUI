@@ -119,15 +119,14 @@ struct ButtonsView: View {
     
     var body: some View {
         HStack() {
-            
-            Button("Sign in", action: self.verifyUserCredentials)
-                .modifier(ButtonsViewModifier(
-                    offset: offset))
-                .disabled(loginText.isEmpty || passwordText.isEmpty)
-            
-            Button("Register", action: didTapRegister)
-                .modifier(ButtonsViewModifier(
-                    offset: offset))
+            Group {
+                Button("Sign in", action: self.verifyUserCredentials)
+                    .disabled(loginText.isEmpty || passwordText.isEmpty)
+                
+                Button("Register", action: didTapRegister)
+                
+            } .modifier(ButtonsViewModifier(
+                offset: offset))
         }
     }
     
@@ -149,13 +148,12 @@ struct TextFieldsView: View {
     @Binding var password: String
     
     var body: some View {
-        TextField("Login", text: $login)
-            .frame(maxWidth: 160)
-            .textFieldStyle(.roundedBorder)
-        
-        SecureField("Password", text: $password)
-            .frame(width: 160)
-            .textFieldStyle(.roundedBorder)
+        Group {
+            TextField("Login", text: $login)
+            SecureField("Password", text: $password)
+        }
+        .frame(width: 160)
+        .textFieldStyle(.roundedBorder)
     }
 }
 
@@ -175,6 +173,7 @@ extension UIApplication {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+        
         LoginScreenView()
             .previewInterfaceOrientation(.portrait)
     }
