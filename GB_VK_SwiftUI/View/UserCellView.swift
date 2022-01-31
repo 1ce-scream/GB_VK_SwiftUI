@@ -18,12 +18,16 @@ struct UserCellView: View {
 // MARK: - Body
     var body: some View {
         HStack {
+            
             AvatarImage {
                 Image(avatarName)
             }
+            
             VStack(alignment: .leading) {
+                
                 Text("\(name)")
                     .font(.title2)
+               
                 Text("\(status)")
                     .font(.system(size: 12))
             }

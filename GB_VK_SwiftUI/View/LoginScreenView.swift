@@ -32,12 +32,17 @@ struct LoginScreenView: View {
     var body: some View {
         ZStack{
             GeometryReader { geometry in
+                
                 LogoView()
+                
                 ScrollView {
                     VStack() {
+                        
                         Spacer()
+                        
                         TextFieldsView(login: $login,
                                        password: $password)
+                       
                         ButtonsView(loginText: login,
                                     passwordText: password,
                                     offset: $offset,
@@ -91,6 +96,7 @@ struct LoginScreenView: View {
 struct LogoView: View {
     var body: some View {
         HStack {
+            
             Image("vk-logo3")
                 .resizable()
                 .frame(width: 60, height: 60)
@@ -113,10 +119,12 @@ struct ButtonsView: View {
     
     var body: some View {
         HStack() {
+            
             Button("Sign in", action: self.verifyUserCredentials)
                 .modifier(ButtonsViewModifier(
                     offset: offset))
                 .disabled(loginText.isEmpty || passwordText.isEmpty)
+            
             Button("Register", action: didTapRegister)
                 .modifier(ButtonsViewModifier(
                     offset: offset))

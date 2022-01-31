@@ -18,11 +18,14 @@ struct CommunityCellView: View {
     
     var body: some View {
         HStack {
+            
             AvatarImage {
                 Image(avatarName)
             }
+            
             Text("\(name)")
                 .font(.title2)
+            
             Spacer()
         }
 //        .border(Color.gray)
