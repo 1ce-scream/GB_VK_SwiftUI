@@ -11,24 +11,22 @@ struct CommunityCellView: View {
 
 // MARK: - Properties
     
-    let name: String = "Earn your first million"
-    let avatarName: String = "group3"
-
+    let community: Community
+    
 // MARK: - Body
     
     var body: some View {
         HStack {
             
             AvatarImage {
-                Image(avatarName)
+                Image(self.community.photo)
             }
             
-            Text("\(name)")
+            Text("\(self.community.name)")
                 .font(.title2)
             
             Spacer()
         }
-//        .border(Color.gray)
     }
 }
 
@@ -39,7 +37,10 @@ struct CommunityCellView: View {
 
 struct CommunityCellView_Previews: PreviewProvider {
     static var previews: some View {
-        CommunityCellView()
+        let community = Community(id: 0,
+                                  name: "Earn your first million",
+                                  photo: "group3")
+        CommunityCellView(community: community)
+            .previewLayout(PreviewLayout.sizeThatFits)
     }
 }
-

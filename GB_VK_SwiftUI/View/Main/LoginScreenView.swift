@@ -15,7 +15,6 @@ struct LoginScreenView: View {
     @State private var login = ""
     @State private var password = ""
     @State private var isUserCredsAlertShow = false
-    @State private var isLoginComplete = false
     
     private let keyboardIsOnPublisher = Publishers.Merge(
         NotificationCenter.default.publisher(
@@ -26,6 +25,10 @@ struct LoginScreenView: View {
             .map { _ in false}
     )
         .removeDuplicates()
+
+// MARK: - Properties
+    
+    @Binding var isLoginComplete: Bool
     
 // MARK: - Body
     
@@ -159,22 +162,14 @@ struct TextFieldsView: View {
 
 // MARK: - Extensions
 
-extension UIApplication {
-    func endEditing() {
-        sendAction(#selector(UIResponder.resignFirstResponder),
-                   to: nil,
-                   from: nil,
-                   for: nil)
-    }
-}
-
 
 // MARK: - Previews
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         
-        LoginScreenView()
+        LoginScreenView(isLoginComplete: .constant(false))
             .previewInterfaceOrientation(.portrait)
+    
     }
 }

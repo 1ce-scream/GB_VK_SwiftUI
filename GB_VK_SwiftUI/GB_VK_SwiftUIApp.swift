@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct GB_VK_SwiftUIApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            LoginScreenView()
+//            LoginScreenView()
+            ContentView()
         }
     }
 }
