@@ -51,3 +51,18 @@ struct AvatarModifier: ViewModifier {
             .shadow(color: .black, radius: 5, x: 3, y: 0)
     }
 }
+
+struct StatusColorModifire: ViewModifier {
+    let status: Status
+    
+    func body(content: Content) -> some View {
+        var color: Color
+        
+        if status == .onLine {
+            color = Color.green
+        } else {
+            color = Color.red
+        }
+        return content.foregroundColor(color)
+    }
+}

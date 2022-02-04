@@ -11,25 +11,25 @@ struct UserCellView: View {
     
 // MARK: - Properties
     
-    let name: String = "Stan Marsh"
-    let status: String = "offline"
-    let avatarName: String = "StanMarsh"
-
+    let user: User
+    
 // MARK: - Body
+
     var body: some View {
         HStack {
             
             AvatarImage {
-                Image(avatarName)
+                Image(self.user.photo)
             }
             
             VStack(alignment: .leading) {
                 
-                Text("\(name)")
+                Text("\(self.user.firstName) \(self.user.lastName)")
                     .font(.title2)
                
-                Text("\(status)")
-                    .font(.system(size: 12))
+                Text("\(self.user.status.rawValue)")
+                    .font(.subheadline)
+                    .statusColorModifire(status: self.user.status)
             }
             Spacer()
         }
@@ -46,6 +46,12 @@ struct UserCellView: View {
 // MARK: - Previews
 struct UserCellView_Previews: PreviewProvider {
     static var previews: some View {
-        UserCellView()
+        let user = User(id: 0,
+                        firstName: "Stan",
+                        lastName: "Marsh",
+                        photo: "StanMarsh",
+                        status: .offLine)
+        UserCellView(user: user)
+            .previewLayout(PreviewLayout.sizeThatFits)
     }
 }
