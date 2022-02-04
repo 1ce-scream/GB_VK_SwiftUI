@@ -8,18 +8,27 @@
 import SwiftUI
 
 struct NewsListView: View {
+ 
+// MARK: - Properties
     
     @State var news: [News] = []
     let text = " Hello world! This is our first News! Text must be huge! That's great! 👌👌👌 Aloha!"
+    
+// MARK: - Body
+    
     var body: some View {
         
         List(self.news) { news in
             NewsCellView(news: news)
-        }.onAppear{
+        }
+        .navigationTitle("\(Tabs.news.rawValue)")
+        .onAppear{
             self.news = self.fillNews()
         }
         
     }
+
+// MARK: - Private methods
     
     private func fillNews() -> [News] {
         var newsLocal: [News] = []
@@ -34,6 +43,8 @@ struct NewsListView: View {
         return newsLocal
     }
 }
+
+// MARK: - Previews
 
 struct NewsListView_Previews: PreviewProvider {
     static var previews: some View {

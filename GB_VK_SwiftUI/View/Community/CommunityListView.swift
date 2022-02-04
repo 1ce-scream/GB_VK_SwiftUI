@@ -8,16 +8,25 @@
 import SwiftUI
 
 struct CommunityListView: View {
+    
+// MARK: - Properties
+    
     @State var communities: [Community] = []
+
+// MARK: - Body
     
     var body: some View {
         
         List(self.communities) { community in
             CommunityCellView(community: community)
-        }.onAppear{
+        }
+        .navigationTitle("\(Tabs.groups.rawValue)")
+        .onAppear{
             self.communities = self.fillCommunities()
         }
     }
+ 
+// MARK: - Private methods
     
     private func fillCommunities() -> [Community] {
         var communitiesLocal: [Community] = []
@@ -30,6 +39,8 @@ struct CommunityListView: View {
         return communitiesLocal
     }
 }
+
+// MARK: - Previews
 
 struct CommunityListView_Previews: PreviewProvider {
     static var previews: some View {

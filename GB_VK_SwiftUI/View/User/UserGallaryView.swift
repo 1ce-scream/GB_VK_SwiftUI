@@ -9,14 +9,20 @@ import SwiftUI
 import ASCollectionView
 
 struct UserGalleryView: View {
+
+// MARK: - Properties
     
     let user: User
+
+// MARK: - Body
     
     var body: some View {
         ASCollectionView(data: self.user.photos) { photo, context in
+            
             Image(photo.name)
                 .resizable()
-                .aspectRatio(1, contentMode: .fit)
+                .scaledToFit()
+            
         }
         .layout {
             .grid(
@@ -27,6 +33,9 @@ struct UserGalleryView: View {
         }
     }
 }
+
+
+// MARK: - Previews
 
 struct UserGalleryView_Previews: PreviewProvider {
     static var previews: some View {

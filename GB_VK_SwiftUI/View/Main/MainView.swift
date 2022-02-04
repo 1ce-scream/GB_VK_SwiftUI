@@ -14,29 +14,40 @@ enum Tabs: String {
 }
 
 struct MainView: View {
+
+// MARK: - Properties
     
-    @State var selectedTab: Tabs = .friends
+    @State private var selectedTab: Tabs = .friends
+
+// MARK: - Body
     
     var body: some View {
         
         TabView(selection: $selectedTab) {
+            NavigationView {
+                UsersListView()
+            }
+            .tabItem { Label("Друзья", systemImage: "person.2.fill") }
+            .tag(Tabs.friends)
             
-            UsersListView()
-                .tabItem { Label("Друзья", systemImage: "person.2.fill") }
-                .tag(Tabs.friends)
+            NavigationView {
+                CommunityListView()
+            }
+            .tabItem { Label("Группы", systemImage: "person.3.fill") }
+            .tag(Tabs.groups)
             
-            CommunityListView()
-                .tabItem { Label("Группы", systemImage: "person.3.fill") }
-                .tag(Tabs.groups)
-            
-            NewsListView()
-                .tabItem { Label("Новости", systemImage: "newspaper.fill") }
-                .tag(Tabs.news)
+            NavigationView {
+                NewsListView()
+            }
+            .tabItem { Label("Новости", systemImage: "newspaper.fill") }
+            .tag(Tabs.news)
         }
         .navigationTitle(selectedTab.rawValue)
         .navigationBarBackButtonHidden(true)
     }
 }
+
+// MARK: - Previews
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {

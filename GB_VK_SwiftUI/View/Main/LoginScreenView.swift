@@ -73,7 +73,7 @@ struct LoginScreenView: View {
         })
     }
 
-// MARK: - Private functions
+// MARK: - Private methods
     
     private func changeOffsetForKeyboard(height: CGFloat) -> CGFloat {
         let scenes = UIApplication.shared.connectedScenes
@@ -114,6 +114,7 @@ struct LogoView: View {
 }
 
 struct ButtonsView: View {
+    
     var loginText: String
     var passwordText: String
     @Binding var offset: CGFloat

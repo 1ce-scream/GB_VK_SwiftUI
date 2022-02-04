@@ -8,19 +8,29 @@
 import SwiftUI
 
 struct UsersListView: View {
+
+// MARK: - Properties
+    
     @State var users: [User] = []
+
+// MARK: - Body
     
     var body: some View {
         List(self.users) { user in
+            
             NavigationLink(
                 destination: UserGalleryView(user: user),
                 label: {
                     UserCellView(user: user)
                 })
-        }.onAppear{
+        }
+        .navigationTitle("\(Tabs.friends.rawValue)")
+        .onAppear {
             self.users = self.fillUsers()
         }
     }
+
+// MARK: - Private methods
     
     private func fillUsers() -> [User] {
         var usersLocal: [User] = []
@@ -40,6 +50,8 @@ struct UsersListView: View {
         return usersLocal
     }
 }
+
+// MARK: - Previews
 
 struct UsersListView_Previews: PreviewProvider {
     static var previews: some View {

@@ -38,6 +38,8 @@ struct NewsCellView: View {
     }
 }
 
+// MARK: - Views
+
 struct BottomNewsView: View {
     
     var body: some View {
