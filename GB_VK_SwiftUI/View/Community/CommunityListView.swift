@@ -11,39 +11,32 @@ struct CommunityListView: View {
     
 // MARK: - Properties
     
-    @State var communities: [Community] = []
+//    @State var communities: [Community] = []
+    
+    @ObservedObject var viewModel: CommunityViewModel
+
+    init(viewModel: CommunityViewModel) {
+        self.viewModel = viewModel
+    }
 
 // MARK: - Body
     
     var body: some View {
         
-        List(self.communities) { community in
+        List(viewModel.communities) { community in
             CommunityCellView(community: community)
         }
         .navigationTitle("\(Tabs.groups.rawValue)")
         .onAppear{
-            self.communities = self.fillCommunities()
+            viewModel.getCommunities()
         }
-    }
- 
-// MARK: - Private methods
-    
-    private func fillCommunities() -> [Community] {
-        var communitiesLocal: [Community] = []
-        for i in 0...100 {
-            let community = Community(id: i,
-                                      name: "\(i) Earn your first million",
-                                      photo: "group3")
-            communitiesLocal.append(community)
-        }
-        return communitiesLocal
     }
 }
 
 // MARK: - Previews
 
-struct CommunityListView_Previews: PreviewProvider {
-    static var previews: some View {
-        CommunityListView()
-    }
-}
+//struct CommunityListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CommunityListView()
+//    }
+//}

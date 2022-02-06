@@ -7,21 +7,27 @@
 
 import SwiftUI
 import ASCollectionView
+import Kingfisher
 
 struct UserGalleryView: View {
 
 // MARK: - Properties
-    
-    let user: User
+
+    @ObservedObject var viewModel: UserGallaryViewModel
+
+    init(viewModel: UserGallaryViewModel) {
+        self.viewModel = viewModel
+    }
 
 // MARK: - Body
-    
+
     var body: some View {
-        ASCollectionView(data: self.user.photos) { photo, context in
-            
-            Image(photo.name)
-                .resizable()
-                .scaledToFit()
+//        Text("Hello")
+        ASCollectionView(data: viewModel.photos) { photo, context in
+            KFImage(URL(string: photo.sizes.first!.url))
+//            Image(photo.name)
+//                .resizable()
+//                .scaledToFit()
             
         }
         .layout {
@@ -37,13 +43,13 @@ struct UserGalleryView: View {
 
 // MARK: - Previews
 
-struct UserGalleryView_Previews: PreviewProvider {
-    static var previews: some View {
-        let user = User(id: 0,
-                        firstName: "Stan",
-                        lastName: "Marsh",
-                        photo: "StanMarsh",
-                        status: .offLine)
-        UserGalleryView(user: user)
-    }
-}
+//struct UserGalleryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let user = User(id: 0,
+//                        firstName: "Stan",
+//                        lastName: "Marsh",
+//                        photo: "StanMarsh",
+//                        status: .offLine)
+//        UserGalleryView(user: user)
+//    }
+//}

@@ -7,14 +7,14 @@
 
 import Foundation
 
-class Community: Identifiable {
-    let id: Int
-    let name: String
-    let photo: String
+class Community: Codable, Identifiable {
+    var id: Int
+    var name: String
+    var photo200: String?
     
-    init(id: Int, name: String, photo: String = "") {
-        self.id = id
-        self.name = name
-        self.photo = photo
+    enum CodingKeys: String, CodingKey {
+        case id
+        case photo200 = "photo_200"
+        case name
     }
 }

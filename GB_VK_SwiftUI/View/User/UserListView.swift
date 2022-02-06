@@ -8,54 +8,39 @@
 import SwiftUI
 
 struct UsersListView: View {
-
+    
 // MARK: - Properties
     
-    @State var users: [User] = []
-
+    @ObservedObject var viewModel: UserViewModel
+    
+    init(viewModel: UserViewModel) {
+        self.viewModel = viewModel
+    }
+    
 // MARK: - Body
     
     var body: some View {
-        List(self.users) { user in
+        List(viewModel.users) { user in
             
             NavigationLink(
-                destination: UserGalleryView(user: user),
+                destination: UserGalleryView(
+                    viewModel: UserGallaryViewModel(
+                        userID: viewModel.users.first!.id)),
                 label: {
                     UserCellView(user: user)
                 })
         }
         .navigationTitle("\(Tabs.friends.rawValue)")
         .onAppear {
-            self.users = self.fillUsers()
+            viewModel.getUsers()
         }
-    }
-
-// MARK: - Private methods
-    
-    private func fillUsers() -> [User] {
-        var usersLocal: [User] = []
-        for i in 0...100 {
-            var photos: [Photo] = []
-            for _ in 0...100 {
-                photos.append(Photo(name: "StanMarsh"))
-            }
-            let user = User(id: i,
-                            firstName: "Stan",
-                            lastName: "Marsh",
-                            photo: "StanMarsh",
-                            status: .offLine,
-                            photos: photos)
-            usersLocal.append(user)
-        }
-        return usersLocal
     }
 }
 
 // MARK: - Previews
 
-struct UsersListView_Previews: PreviewProvider {
-    static var previews: some View {
-        UsersListView()
-    }
-}
-
+//struct UsersListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UsersListView(viewModel: UserViewModel(networkService: NetworkService()))
+//    }
+//}

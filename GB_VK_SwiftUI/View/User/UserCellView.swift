@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct UserCellView: View {
     
@@ -18,8 +19,8 @@ struct UserCellView: View {
     var body: some View {
         HStack {
             
-            AvatarImage {
-                Image(self.user.photo)
+            KFAvatarImage {
+                KFImage(URL(string: self.user.photo200_Orig!)!)
             }
             
             VStack(alignment: .leading) {
@@ -44,14 +45,14 @@ struct UserCellView: View {
 
 
 // MARK: - Previews
-struct UserCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        let user = User(id: 0,
-                        firstName: "Stan",
-                        lastName: "Marsh",
-                        photo: "StanMarsh",
-                        status: .offLine)
-        UserCellView(user: user)
-            .previewLayout(PreviewLayout.sizeThatFits)
-    }
-}
+//struct UserCellView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let user = User(id: 0,
+//                        firstName: "Stan",
+//                        lastName: "Marsh",
+//                        photo: "StanMarsh",
+//                        status: .offLine)
+//        UserCellView(user: user)
+//            .previewLayout(PreviewLayout.sizeThatFits)
+//    }
+//}

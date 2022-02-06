@@ -19,19 +19,25 @@ struct MainView: View {
     
     @State private var selectedTab: Tabs = .friends
 
+    let networkService = NetworkService()
+    
 // MARK: - Body
     
     var body: some View {
         
+        let userViewModel = UserViewModel()
+        let communityViewModel = CommunityViewModel()
+        
         TabView(selection: $selectedTab) {
+           
             NavigationView {
-                UsersListView()
+                UsersListView(viewModel: userViewModel)
             }
             .tabItem { Label("Друзья", systemImage: "person.2.fill") }
             .tag(Tabs.friends)
             
             NavigationView {
-                CommunityListView()
+                CommunityListView(viewModel: communityViewModel)
             }
             .tabItem { Label("Группы", systemImage: "person.3.fill") }
             .tag(Tabs.groups)

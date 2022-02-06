@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CommunityCellView: View {
 
@@ -18,8 +19,9 @@ struct CommunityCellView: View {
     var body: some View {
         HStack {
             
-            AvatarImage {
-                Image(self.community.photo)
+            KFAvatarImage {
+//                Image(self.community.photo)
+                KFImage(URL(string:self.community.photo200!)!)
             }
             
             Text("\(self.community.name)")
@@ -35,12 +37,12 @@ struct CommunityCellView: View {
 
 // MARK: - Previews
 
-struct CommunityCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        let community = Community(id: 0,
-                                  name: "Earn your first million",
-                                  photo: "group3")
-        CommunityCellView(community: community)
-            .previewLayout(PreviewLayout.sizeThatFits)
-    }
-}
+//struct CommunityCellView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let community = Community(id: 0,
+//                                  name: "Earn your first million",
+//                                  photo: "group3")
+//        CommunityCellView(community: community)
+//            .previewLayout(PreviewLayout.sizeThatFits)
+//    }
+//}

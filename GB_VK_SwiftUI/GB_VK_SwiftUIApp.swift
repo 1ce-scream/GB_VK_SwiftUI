@@ -18,7 +18,8 @@ struct GB_VK_SwiftUIApp: App {
             if isLoginComplete {
                 MainView()
             } else {
-                LoginScreenView(isLoginComplete: $isLoginComplete)
+//                LoginScreenView(isLoginComplete: $isLoginComplete)
+                LoginWebView(isLoginComplete: $isLoginComplete)
             }
             
         }
