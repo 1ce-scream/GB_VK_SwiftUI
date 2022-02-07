@@ -17,18 +17,25 @@ struct CommunityCellView: View {
 // MARK: - Body
     
     var body: some View {
-        HStack {
-            
-            KFAvatarImage {
-//                Image(self.community.photo)
-                KFImage(URL(string:self.community.photo200!)!)
+        VStack {
+            HStack {
+                
+                KFAvatarImage {
+                    //                Image(self.community.photo)
+                    KFImage(URL(string:self.community.photo200!)!)
+                }
+                
+                Text("\(self.community.name)")
+                    .font(.title2)
+                
+                Spacer()
             }
             
-            Text("\(self.community.name)")
-                .font(.title2)
-            
-            Spacer()
+            Text("\(self.community.description)")
+                .font(.subheadline)
+                .fixedSize(horizontal: false, vertical: true)
         }
+        .listRowSeparatorTint(Color.blue)
     }
 }
 

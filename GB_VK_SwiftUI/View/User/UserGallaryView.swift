@@ -22,13 +22,10 @@ struct UserGalleryView: View {
 // MARK: - Body
 
     var body: some View {
-//        Text("Hello")
         ASCollectionView(data: viewModel.photos) { photo, context in
-            KFImage(URL(string: photo.sizes.first!.url))
-//            Image(photo.name)
-//                .resizable()
+            KFImage(URL(string: photo.url))
+                .resizable()
 //                .scaledToFit()
-            
         }
         .layout {
             .grid(
@@ -37,6 +34,7 @@ struct UserGalleryView: View {
                 lineSpacing: 5,
                 itemSize: .absolute(50))
         }
+        .onAppear(perform: viewModel.getPhotos)
     }
 }
 

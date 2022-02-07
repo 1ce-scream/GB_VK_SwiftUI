@@ -11,43 +11,34 @@ struct NewsListView: View {
  
 // MARK: - Properties
     
-    @State var news: [News] = []
-    let text = " Hello world! This is our first News! Text must be huge! That's great! 👌👌👌 Aloha!"
+//    @State var news: [News] = []
+//    let text = " Hello world! This is our first News! Text must be huge! That's great! 👌👌👌 Aloha!"
     
+    @ObservedObject var viewModel: NewsViewModel
+
+    init(viewModel: NewsViewModel) {
+        self.viewModel = viewModel
+    }
 // MARK: - Body
     
     var body: some View {
         
-        List(self.news) { news in
+        List(viewModel.news) { news in
             NewsCellView(news: news)
+                .listRowSeparatorTint(Color.blue, edges: .all)
         }
         .navigationTitle("\(Tabs.news.rawValue)")
         .onAppear{
-            self.news = self.fillNews()
+            viewModel.getNews()
         }
         
-    }
-
-// MARK: - Private methods
-    
-    private func fillNews() -> [News] {
-        var newsLocal: [News] = []
-        for i in 0...100 {
-            let news = News(postID: i,
-                            text: self.text,
-                            sourceID: 1,
-                            avatarURL: "group1",
-                            creatorName: "The best group ever")
-            newsLocal.append(news)
-        }
-        return newsLocal
     }
 }
 
 // MARK: - Previews
 
-struct NewsListView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewsListView()
-    }
-}
+//struct NewsListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NewsListView()
+//    }
+//}

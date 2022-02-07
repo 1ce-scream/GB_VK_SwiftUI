@@ -36,6 +36,8 @@
 		FE81872B27B0351F0083C476 /* LoginWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE81872A27B0351F0083C476 /* LoginWebView.swift */; };
 		FE81872D27B0426C0083C476 /* CommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE81872C27B0426C0083C476 /* CommunityViewModel.swift */; };
 		FE81872F27B047CD0083C476 /* UserGallaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE81872E27B047CD0083C476 /* UserGallaryViewModel.swift */; };
+		FE81873127B11DA30083C476 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE81873027B11DA30083C476 /* DateFormatter.swift */; };
+		FE81873327B11E4A0083C476 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE81873227B11E4A0083C476 /* NewsViewModel.swift */; };
 		FEC0D00527A1842300905751 /* UserCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0D00427A1842300905751 /* UserCellView.swift */; };
 		FEC0D00727A1A92B00905751 /* CommunityCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0D00627A1A92B00905751 /* CommunityCellView.swift */; };
 		FEC0D00927A1BC2B00905751 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0D00827A1BC2B00905751 /* ViewModifiers.swift */; };
@@ -69,6 +71,8 @@
 		FE81872A27B0351F0083C476 /* LoginWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWebView.swift; sourceTree = "<group>"; };
 		FE81872C27B0426C0083C476 /* CommunityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
 		FE81872E27B047CD0083C476 /* UserGallaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGallaryViewModel.swift; sourceTree = "<group>"; };
+		FE81873027B11DA30083C476 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		FE81873227B11E4A0083C476 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		FEC0D00427A1842300905751 /* UserCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellView.swift; sourceTree = "<group>"; };
 		FEC0D00627A1A92B00905751 /* CommunityCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellView.swift; sourceTree = "<group>"; };
 		FEC0D00827A1BC2B00905751 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
@@ -121,8 +125,8 @@
 		FE134994279C36D200CD424A /* GB_VK_SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				FE134995279C36D200CD424A /* GB_VK_SwiftUIApp.swift */,
 				FE21F90727AC0CB30027225E /* Extensions.swift */,
+				FE81873027B11DA30083C476 /* DateFormatter.swift */,
 				FE01FDC327B0178400715AC8 /* Services */,
 				FE21F8EC27ABFB470027225E /* Models */,
 				FE81872727B030690083C476 /* ViewModels */,
@@ -195,8 +199,9 @@
 			isa = PBXGroup;
 			children = (
 				FE81872827B030860083C476 /* UserViewModel.swift */,
-				FE81872C27B0426C0083C476 /* CommunityViewModel.swift */,
 				FE81872E27B047CD0083C476 /* UserGallaryViewModel.swift */,
+				FE81872C27B0426C0083C476 /* CommunityViewModel.swift */,
+				FE81873227B11E4A0083C476 /* NewsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 		FEC0D00327A1718D00905751 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FE134995279C36D200CD424A /* GB_VK_SwiftUIApp.swift */,
 				FE21F90027AC04520027225E /* Main */,
 				FE21F8F827AC00660027225E /* User */,
 				FE21F8F727ABFE880027225E /* Community */,
@@ -304,6 +310,7 @@
 				FE01FDD227B0221200715AC8 /* RealmService.swift in Sources */,
 				FE21F90D27AC15250027225E /* NewsCellView.swift in Sources */,
 				FE134998279C36D200CD424A /* LoginScreenView.swift in Sources */,
+				FE81873327B11E4A0083C476 /* NewsViewModel.swift in Sources */,
 				FEC0D00B27A1BCA700905751 /* ViewBuilders.swift in Sources */,
 				FE21F90427AC04E80027225E /* NewsListView.swift in Sources */,
 				FEC0D00527A1842300905751 /* UserCellView.swift in Sources */,
@@ -319,6 +326,7 @@
 				FE01FDC527B0181C00715AC8 /* NetworkService.swift in Sources */,
 				FE81872F27B047CD0083C476 /* UserGallaryViewModel.swift in Sources */,
 				FE01FDD027B021D700715AC8 /* Response.swift in Sources */,
+				FE81873127B11DA30083C476 /* DateFormatter.swift in Sources */,
 				FE21F90827AC0CB30027225E /* Extensions.swift in Sources */,
 				FE21F8EE27ABFC050027225E /* Community.swift in Sources */,
 				FE134996279C36D200CD424A /* GB_VK_SwiftUIApp.swift in Sources */,

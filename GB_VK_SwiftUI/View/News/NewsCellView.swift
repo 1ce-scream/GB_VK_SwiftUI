@@ -11,7 +11,7 @@ struct NewsCellView: View {
 
 // MARK: - Properties
 
-    let news: News
+    let news: NewsModel
 
 // MARK: - Body
     
@@ -57,15 +57,15 @@ struct BottomNewsView: View {
 
 // MARK: - Previews
 
-struct NewsCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        let news = News(postID: 0,
-                        text: "Hello world!",
-                        sourceID: 1,
-                        avatarURL: "group1",
-                        creatorName: "The best group ever")
-        NewsCellView(news: news)
-            .previewLayout(PreviewLayout.sizeThatFits)
-    }
-}
-
+//struct NewsCellView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let news = News(postID: 0,
+//                        text: "Hello world!",
+//                        sourceID: 1,
+//                        avatarURL: "group1",
+//                        creatorName: "The best group ever")
+//        NewsCellView(news: news)
+//            .previewLayout(PreviewLayout.sizeThatFits)
+//    }
+//}
+//

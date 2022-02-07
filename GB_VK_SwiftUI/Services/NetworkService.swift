@@ -113,10 +113,9 @@ class NetworkService {
                 from: responseData).response.items
             else { return }
 
-//            photos.forEach {
-//                $0.likesCount = $0.likes?.count ?? 0
-//                $0.isLiked = $0.likes?.userLikes ?? 0 > 0
-//            }
+            photos.forEach {
+                $0.url = $0.sizes.first?.url ?? ""
+            }
 
             DispatchQueue.main.async {
                 onComplete(photos)
@@ -158,7 +157,7 @@ class NetworkService {
         
         urlConstructor.queryItems = [
             URLQueryItem(name: "extended", value: "1"),
-            URLQueryItem(name: "fields", value: "photo_200"),
+            URLQueryItem(name: "fields", value: "description"),
             URLQueryItem(name: "access_token", value: Session.shared.token),
             URLQueryItem(name: "v", value: constants.versionAPI),
         ]
@@ -301,100 +300,92 @@ class NetworkService {
     }
     
     //MARK: - News
-//
-//    func getNews(startTime: String? = nil,
-//                 startFrom: String? = nil,
-//                 onComplete: @escaping ([NewsModel], String?) -> Void) {
-//
-//        urlConstructor.path = "/method/newsfeed.get"
-//
-//        urlConstructor.queryItems = [
-//            URLQueryItem(name: "filters", value: "post"),
-//            URLQueryItem(name: "count", value: "20"),
-//            URLQueryItem(name: "access_token", value: Session.shared.token),
-//            URLQueryItem(name: "v", value: constants.versionAPI),
-//        ]
-//
-//        if let startTime = startTime {
-//            urlConstructor.queryItems?.append(
-//                URLQueryItem(name: "start_time", value: startTime))
-//        }
-//
-//        if let startFrom = startFrom {
-//            urlConstructor.queryItems?.append(
-//                URLQueryItem(name: "start_from", value: startFrom))
-//        }
-//
-//        let task = session.dataTask(with: urlConstructor.url!) {
-//            (responseData, urlResponse, error) in
-//
-//            if let response = urlResponse as? HTTPURLResponse {
-//                print(response.statusCode)
-//            }
-//
-//            guard
-//                error == nil,
-//                let data = responseData
-//            else { return }
-//
-//
-////            let json = try? JSONSerialization.jsonObject(
-////                with: data,
-////                options: .fragmentsAllowed)
-//            guard
+
+    func getNews(onComplete: @escaping ([NewsModel]) -> Void) {
+
+        urlConstructor.path = "/method/newsfeed.get"
+
+        urlConstructor.queryItems = [
+            URLQueryItem(name: "filters", value: "post"),
+            URLQueryItem(name: "start_from", value: "next_from"),
+            URLQueryItem(name: "count", value: "20"),
+            URLQueryItem(name: "access_token", value: Session.shared.token),
+            URLQueryItem(name: "v", value: constants.versionAPI),
+        ]
+
+
+        let task = session.dataTask(with: urlConstructor.url!) {
+            (responseData, urlResponse, error) in
+
+            if let response = urlResponse as? HTTPURLResponse {
+                print(response.statusCode)
+            }
+
+            guard
+                error == nil,
+                let data = responseData
+            else { return }
+
+
+//            let json = try? JSONSerialization.jsonObject(
+//                with: data,
+//                options: .fragmentsAllowed)
+
+            guard
 //                let news = try? JSONDecoder().decode(
 //                    VKResponse<NewsModel>.self,
 //                    from: data).response.items
-//            else {
-//                print("News Error")
-//                return
-//            }
-//
-//            guard
+                let news = try? JSONDecoder().decode(
+                    Response<NewsModel>.self,
+                    from: data).response.items
+            else {
+                print("News Error")
+                return
+            }
+
+            guard
 //                let profiles = try? JSONDecoder().decode(
 //                    VKResponse<NewsModel>.self,
 //                    from: data).response.profiles
-//            else {
-//                print("Profiles error")
-//                return
-//            }
-//
-//            guard
+                let profiles = try? JSONDecoder().decode(
+                    ResponseNews.self,
+                    from: data).response.profiles
+            else {
+                print("Profiles error")
+                return
+            }
+
+            guard
 //                let groups = try? JSONDecoder().decode(
 //                    VKResponse<NewsModel>.self,
 //                    from: data).response.groups
-//            else {
-//                print("Groups error")
-//                return
-//            }
-//
-//            guard
-//                let nextFrom = try? JSONDecoder().decode(
-//                    VKResponse<NewsModel>.self,
-//                    from: data).response.nextFrom
-//            else {
-//                print("smth went wrong")
-//                return
-//            }
-//
-//            for i in 0..<news.count {
-//                if news[i].sourceID < 0 {
-//                    let group = groups.first(
-//                        where: { $0.id == -news[i].sourceID })
-//                    news[i].avatarURL = group?.avatarURL
-//                    news[i].creatorName = group?.name
-//                } else {
-//                    let profile = profiles.first(
-//                        where: { $0.id == news[i].sourceID })
-//                    news[i].avatarURL = profile?.avatarURL
-//                    news[i].creatorName = profile?.firstName
-//                }
-//            }
-//
-//            DispatchQueue.main.async {
-//                onComplete(news, nextFrom)
-////                print(json)
-//            }
-//        }
-//        task.resume()
+                let groups = try? JSONDecoder().decode(
+                    ResponseNews.self,
+                    from: data).response.groups
+            else {
+                print("Groups error")
+                return
+            }
+
+            for i in 0..<news.count {
+                if news[i].sourceID < 0 {
+                    let group = groups.first(
+                        where: { $0.id == -news[i].sourceID })
+                    news[i].avatarURL = group?.avatarURL
+                    news[i].creatorName = group?.name
+                } else {
+                    let profile = profiles.first(
+                        where: { $0.id == news[i].sourceID })
+                    news[i].avatarURL = profile?.avatarURL
+                    news[i].creatorName = profile?.firstName
+                }
+            }
+
+            DispatchQueue.main.async {
+                onComplete(news)
+//                print(json)
+            }
+        }
+        task.resume()
+    }
 }

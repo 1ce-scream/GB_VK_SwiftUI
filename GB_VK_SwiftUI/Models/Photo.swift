@@ -11,6 +11,7 @@ class Photo: Codable, Identifiable {
     var id: Int
     var ownerID: Int
     var sizes: [Size]
+    var url: String = ""
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -21,12 +22,11 @@ class Photo: Codable, Identifiable {
 }
 
 class Size: Codable {
-    @objc dynamic var type: String = ""
-    @objc dynamic var url: String = ""
+    var type: String = ""
+    var url: String = ""
     
     enum CodingKeys: String, CodingKey {
         case type
         case url
     }
 }
-

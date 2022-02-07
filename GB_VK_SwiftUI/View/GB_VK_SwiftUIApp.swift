@@ -12,6 +12,10 @@ struct GB_VK_SwiftUIApp: App {
     
     @State var isLoginComplete: Bool = false
     
+    init() {
+        configureUiView()
+    }
+    
     var body: some Scene {
         WindowGroup {
             
@@ -23,5 +27,13 @@ struct GB_VK_SwiftUIApp: App {
             }
             
         }
+    }
+    
+    private func configureUiView() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(.blue)
+        
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
 }

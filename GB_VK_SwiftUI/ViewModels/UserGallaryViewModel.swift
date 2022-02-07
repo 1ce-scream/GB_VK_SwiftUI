@@ -11,7 +11,6 @@ import Combine
 
 class UserGallaryViewModel: ObservableObject {
     
-//    @Published var photos: [String] = []
     @Published var photos: [Photo] = []
     var userID: Int
     private let networkService = NetworkService()
@@ -21,7 +20,7 @@ class UserGallaryViewModel: ObservableObject {
     }
     
     func getPhotos() {
-        networkService.getPhoto(for: userID) { photos in
+        networkService.getPhoto(for: self.userID) { photos in
             self.photos = photos
         }
     }

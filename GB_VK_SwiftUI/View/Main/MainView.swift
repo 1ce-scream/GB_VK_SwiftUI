@@ -27,6 +27,7 @@ struct MainView: View {
         
         let userViewModel = UserViewModel()
         let communityViewModel = CommunityViewModel()
+        let newsViewModel = NewsViewModel()
         
         TabView(selection: $selectedTab) {
            
@@ -43,7 +44,7 @@ struct MainView: View {
             .tag(Tabs.groups)
             
             NavigationView {
-                NewsListView()
+                NewsListView(viewModel: newsViewModel)
             }
             .tabItem { Label("Новости", systemImage: "newspaper.fill") }
             .tag(Tabs.news)

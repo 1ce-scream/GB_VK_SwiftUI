@@ -25,10 +25,11 @@ struct UsersListView: View {
             NavigationLink(
                 destination: UserGalleryView(
                     viewModel: UserGallaryViewModel(
-                        userID: viewModel.users.first!.id)),
+                        userID: user.id)),
                 label: {
                     UserCellView(user: user)
                 })
+                .listRowSeparatorTint(Color.blue)
         }
         .navigationTitle("\(Tabs.friends.rawValue)")
         .onAppear {
