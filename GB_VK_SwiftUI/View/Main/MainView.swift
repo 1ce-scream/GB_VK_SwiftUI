@@ -18,16 +18,15 @@ struct MainView: View {
 // MARK: - Properties
     
     @State private var selectedTab: Tabs = .friends
+    @ObservedObject var userViewModel = UserViewModel()
+    @ObservedObject var communityViewModel = CommunityViewModel()
+    @ObservedObject var newsViewModel = NewsViewModel()
 
     let networkService = NetworkService()
     
 // MARK: - Body
     
     var body: some View {
-        
-        let userViewModel = UserViewModel()
-        let communityViewModel = CommunityViewModel()
-        let newsViewModel = NewsViewModel()
         
         TabView(selection: $selectedTab) {
            

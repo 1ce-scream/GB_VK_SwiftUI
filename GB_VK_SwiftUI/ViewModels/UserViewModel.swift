@@ -7,16 +7,13 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 class UserViewModel: ObservableObject {
     
     @Published var users: [User] = []
     
     private let networkService = NetworkService()
-    
-//    init(networkService: NetworkService) {
-//        self.networkService = networkService
-//    }
     
     func getUsers() {
         networkService.getFriends() { users in

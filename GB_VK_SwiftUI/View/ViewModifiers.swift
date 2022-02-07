@@ -46,7 +46,6 @@ struct MainStackViewModifier: ViewModifier {
 struct AvatarModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .padding(.all, 5)
             .clipShape(Circle())
             .shadow(color: .black, radius: 5, x: 3, y: 0)
     }
