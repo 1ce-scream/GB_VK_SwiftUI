@@ -32,7 +32,7 @@ struct UserGalleryView: View {
                 layoutMode: .adaptive(withMinItemSize: 100),
                 itemSpacing: 5,
                 lineSpacing: 5,
-                itemSize: .absolute(50))
+                itemSize: .absolute(100))
         }
         .onAppear(perform: viewModel.getPhotos)
     }
