@@ -14,6 +14,19 @@ struct GB_VK_SwiftUIApp: App {
     
     init() {
         configureUiView()
+        
+        // test @CodingStyle
+        @CodingStyle(style: .camelCase) var myString = "test Test  test QWERTYUIO"
+        print(myString)
+        
+        @CodingStyle(style: .snakeCase) var myString1 = "test Test-  test QWERTYUIO"
+        print(myString1)
+        
+        @CodingStyle(style: .kebabCase) var myString2 = "test Test_  test QWERTYUIO"
+        print(myString2)
+        
+        @CodingStyle(style: .camelCase) var myString3 = " "
+        print(myString3)
     }
     
     var body: some Scene {
