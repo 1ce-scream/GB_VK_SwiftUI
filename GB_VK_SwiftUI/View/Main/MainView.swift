@@ -18,11 +18,12 @@ struct MainView: View {
 // MARK: - Properties
     
     @State private var selectedTab: Tabs = .friends
-    @ObservedObject var userViewModel = UserViewModel()
-    @ObservedObject var communityViewModel = CommunityViewModel()
-    @ObservedObject var newsViewModel = NewsViewModel()
+    
+    private var userViewModel = UserViewModel()
+    private var communityViewModel = CommunityViewModel()
+    private var newsViewModel = NewsViewModel()
 
-    let networkService = NetworkService()
+    private let networkService = NetworkService()
     
 // MARK: - Body
     
