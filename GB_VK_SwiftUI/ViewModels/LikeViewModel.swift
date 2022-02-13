@@ -38,12 +38,12 @@ class LikeViewModel: ObservableObject {
        
         if isLiked {
             countLike += 1
-            networkService.addLike(type: "post",
+            networkService.addLike(type: self.type,
                                    ownerId: self.ownerId,
                                    itemId: self.itemId)
         } else {
             countLike -= 1
-            networkService.deleteLike(type: "post",
+            networkService.deleteLike(type: self.type,
                                       ownerId: self.ownerId,
                                       itemId: self.itemId)
         }
