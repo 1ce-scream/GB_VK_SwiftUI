@@ -24,8 +24,14 @@ struct NewsCellView: View {
                     KFImage(URL(string:self.news.avatarURL!)!)
                 }
                 
-                Text("\(self.news.creatorName!)")
-                    .font(.title2)
+                VStack(alignment: .center) {
+                    
+                    Text("\(self.news.creatorName!)")
+                        .font(.title2)
+                    
+                    Text("\(self.news.getStringDate())")
+                        .font(.subheadline)
+                }
                 
                 Spacer()
             }
