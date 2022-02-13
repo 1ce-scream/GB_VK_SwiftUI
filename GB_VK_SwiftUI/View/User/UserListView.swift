@@ -24,7 +24,7 @@ struct UsersListView: View {
             
             NavigationLink(
                 destination: UserGalleryView(
-                    viewModel: UserGallaryViewModel(
+                    gallaryViewModel: UserGallaryViewModel(
                         userID: user.id)),
                 label: {
                     UserCellView(user: user)

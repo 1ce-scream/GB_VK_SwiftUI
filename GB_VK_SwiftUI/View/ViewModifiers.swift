@@ -65,3 +65,38 @@ struct StatusColorModifire: ViewModifier {
         return content.foregroundColor(color)
     }
 }
+
+struct AvatarTapAnimationModifier: ViewModifier {
+    @State var scale: CGFloat = 1
+    
+    func body(content: Content) -> some View {
+        content
+            .scaleEffect(self.scale)
+            .animation(Animation.interpolatingSpring(
+                mass: 2,
+                stiffness: 50,
+                damping: 6,
+                initialVelocity: 0.5), value: scale)
+        
+            .onTapGesture {
+                withAnimation(.linear(duration: 0.3)) {
+                    //уменьшение
+                    self.scale = 0.7
+                    
+                    //отпружинивание
+                    var dispatchTime = DispatchTime.now() + 0.7
+                    
+                    DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+                        self.scale = 1.2
+                    }
+                    
+                    //возврат в исходное состояние немного попружинив
+                    dispatchTime = dispatchTime + 0.7
+                    
+                    DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+                        self.scale = 1
+                    }
+                }
+            }
+    }
+}

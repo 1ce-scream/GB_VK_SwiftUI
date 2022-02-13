@@ -11,14 +11,12 @@ struct NewsListView: View {
  
 // MARK: - Properties
     
-//    @State var news: [News] = []
-//    let text = " Hello world! This is our first News! Text must be huge! That's great! 👌👌👌 Aloha!"
-    
     @ObservedObject var viewModel: NewsViewModel
 
     init(viewModel: NewsViewModel) {
         self.viewModel = viewModel
     }
+    
 // MARK: - Body
     
     var body: some View {
@@ -37,8 +35,9 @@ struct NewsListView: View {
 
 // MARK: - Previews
 
-//struct NewsListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NewsListView()
-//    }
-//}
+struct NewsListView_Previews: PreviewProvider {
+    static var previews: some View {
+        let viewModel = NewsViewModel()
+        NewsListView(viewModel: viewModel)
+    }
+}

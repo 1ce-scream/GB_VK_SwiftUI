@@ -11,8 +11,6 @@ struct CommunityListView: View {
     
 // MARK: - Properties
     
-//    @State var communities: [Community] = []
-    
     @ObservedObject var viewModel: CommunityViewModel
 
     init(viewModel: CommunityViewModel) {

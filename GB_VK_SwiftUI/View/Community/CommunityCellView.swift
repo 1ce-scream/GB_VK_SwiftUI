@@ -21,7 +21,6 @@ struct CommunityCellView: View {
             HStack {
                 
                 KFAvatarImage {
-                    //                Image(self.community.photo)
                     KFImage(URL(string:self.community.photo200!)!)
                 }
                 

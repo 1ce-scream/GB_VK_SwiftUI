@@ -35,5 +35,6 @@ struct KFAvatarImage: View {
             .resizable()
             .frame(maxWidth: 50, maxHeight: 50)
             .modifier(AvatarModifier())
+            .modifier(AvatarTapAnimationModifier())
     }
 }

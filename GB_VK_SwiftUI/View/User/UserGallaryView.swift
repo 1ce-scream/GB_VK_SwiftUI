@@ -13,19 +13,35 @@ struct UserGalleryView: View {
 
 // MARK: - Properties
 
-    @ObservedObject var viewModel: UserGallaryViewModel
+    @ObservedObject var gallaryViewModel: UserGallaryViewModel
 
-    init(viewModel: UserGallaryViewModel) {
-        self.viewModel = viewModel
+    init(gallaryViewModel: UserGallaryViewModel) {
+        self.gallaryViewModel = gallaryViewModel
     }
 
 // MARK: - Body
 
     var body: some View {
-        ASCollectionView(data: viewModel.photos) { photo, context in
-            KFImage(URL(string: photo.url))
-                .resizable()
-//                .scaledToFit()
+        ASCollectionView(data: gallaryViewModel.photos) { photo, context in
+            
+            ZStack(alignment: .bottomTrailing) {
+               
+                KFImage(URL(string: photo.url))
+                    .resizable()
+                
+                LikeView(viewModel: LikeViewModel(
+                    countLike: photo.likesCount,
+                    isLiked2: photo.isLiked,
+                    ownerId: photo.ownerID,
+                    itemId: photo.id,
+                    type: "photo"))
+                    .background(
+                        RoundedRectangle(cornerRadius: 30,
+                                         style: .continuous)
+                            .fill(.blue)
+                            .opacity(0.5)
+                    )
+            }
         }
         .layout {
             .grid(
@@ -34,7 +50,8 @@ struct UserGalleryView: View {
                 lineSpacing: 5,
                 itemSize: .absolute(100))
         }
-        .onAppear(perform: viewModel.getPhotos)
+        .navigationTitle("Фото")
+        .onAppear(perform: gallaryViewModel.getPhotos)
     }
 }
 

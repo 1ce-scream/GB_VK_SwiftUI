@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct NewsCellView: View {
 
@@ -19,8 +20,8 @@ struct NewsCellView: View {
         VStack {
             HStack {
                 
-                AvatarImage {
-                    Image(self.news.avatarURL!)
+                KFAvatarImage {
+                    KFImage(URL(string:self.news.avatarURL!)!)
                 }
                 
                 Text("\(self.news.creatorName!)")
@@ -33,7 +34,12 @@ struct NewsCellView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.bottom, 5)
             
-            BottomNewsView()
+            BottomNewsView(
+                likeCounter: news.likes.count,
+                viewsCounter: news.views.count,
+                isLiked: news.likes.userLike,
+                ownerId: news.sourceID,
+                itemId: news.postID)
         }
     }
 }
@@ -41,16 +47,24 @@ struct NewsCellView: View {
 // MARK: - Views
 
 struct BottomNewsView: View {
+    var likeCounter: Int
+    var viewsCounter: Int
+    var isLiked: Int
+    var ownerId: Int
+    var itemId: Int
     
     var body: some View {
         HStack(alignment: .center) {
             
-            Text("Просмотров: 100")
+            Text("Просмотров: \(viewsCounter)")
             
             Spacer()
             
-            Image(systemName: "heart")
-                .foregroundColor(Color.red)
+            LikeView(viewModel: LikeViewModel(countLike: likeCounter,
+                                              isLiked2: isLiked,
+                                             ownerId: ownerId,
+                                             itemId: itemId,
+                                             type: "post"))
         }
     }
 }

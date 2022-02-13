@@ -11,6 +11,10 @@ extension View {
     func statusColorModifire(status: Status) -> some View {
         self.modifier(StatusColorModifire(status: status))
     }
+    
+    func avatarTapAnimationModifier() -> some View {
+        self.modifier(AvatarTapAnimationModifier())
+    }
 }
 
 extension UIApplication {

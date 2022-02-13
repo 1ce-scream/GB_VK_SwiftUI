@@ -115,6 +115,8 @@ class NetworkService {
 
             photos.forEach {
                 $0.url = $0.sizes.first?.url ?? ""
+                $0.likesCount = $0.likes?.count ?? 0
+                $0.isLiked = $0.likes?.userLikes ?? 0
             }
 
             DispatchQueue.main.async {
