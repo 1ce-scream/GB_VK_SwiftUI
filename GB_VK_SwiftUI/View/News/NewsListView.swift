@@ -25,9 +25,11 @@ struct NewsListView: View {
             NewsCellView(news: news)
                 .listRowSeparatorTint(Color.blue, edges: .all)
         }
+        .background(Color.blue.ignoresSafeArea())
         .navigationTitle("\(Tabs.news.rawValue)")
         .onAppear{
             viewModel.getNews()
+            UITableView.appearance().backgroundColor = .clear
         }
         
     }

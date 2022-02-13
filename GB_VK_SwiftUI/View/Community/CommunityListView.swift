@@ -24,9 +24,11 @@ struct CommunityListView: View {
         List(viewModel.communities) { community in
             CommunityCellView(community: community)
         }
+        .background(Color.blue.ignoresSafeArea())
         .navigationTitle("\(Tabs.groups.rawValue)")
         .onAppear{
             viewModel.getCommunities()
+            UITableView.appearance().backgroundColor = .clear
         }
     }
 }

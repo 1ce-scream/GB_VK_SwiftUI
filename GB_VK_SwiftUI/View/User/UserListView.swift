@@ -31,9 +31,11 @@ struct UsersListView: View {
                 })
                 .listRowSeparatorTint(Color.blue)
         }
+        .background(Color.blue.ignoresSafeArea())
         .navigationTitle("\(Tabs.friends.rawValue)")
         .onAppear {
             viewModel.getUsers()
+            UITableView.appearance().backgroundColor = .clear
         }
     }
 }
