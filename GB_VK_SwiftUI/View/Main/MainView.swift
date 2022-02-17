@@ -17,13 +17,13 @@ struct MainView: View {
 
 // MARK: - Properties
     
-    @State private var selectedTab: Tabs = .friends
+//    @State private var selectedTab: Tabs = .friends
     
     private var userViewModel = UserViewModel()
     private var communityViewModel = CommunityViewModel()
     private var newsViewModel = NewsViewModel()
 
-    private let networkService = NetworkService()
+//    private let networkService = NetworkService()
     
     
 // MARK: - Body
@@ -34,6 +34,7 @@ struct MainView: View {
                    communityViewModel: self.communityViewModel,
                    newsViewModel: self.newsViewModel)
             .navigationBarBackButtonHidden(true)
+            .ignoresSafeArea()
         
     }
 //        TabView(selection: $selectedTab) {

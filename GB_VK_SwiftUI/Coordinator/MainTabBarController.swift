@@ -19,14 +19,14 @@ struct MainTabBar: UIViewControllerRepresentable {
         let controllers = setControllers()
         controller.viewControllers = controllers
         controller.delegate = context.coordinator
-
+        
         return controller
     }
-
+    
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         
         let controllers = setControllers()
-
+        
         uiViewController.tabBarController?.setViewControllers(
             controllers,
             animated: true)
@@ -35,17 +35,19 @@ struct MainTabBar: UIViewControllerRepresentable {
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-
+    
     class Coordinator: NSObject, UITabBarControllerDelegate {
         var mainTabBar: MainTabBar
-
+        
         init(_ tabBarController: MainTabBar) {
             mainTabBar = tabBarController
         }
     }
     
     func setControllers() -> [UIViewController] {
-        let usersView = UsersListView(viewModel: self.userViewModel)
+        let usersView = NavigationView {
+            UsersListView(viewModel: self.userViewModel)
+        }
         let vcUsers = UIHostingController(rootView: usersView)
         let usersTabBarItem = UITabBarItem(
             title: "Друзья",
@@ -53,7 +55,9 @@ struct MainTabBar: UIViewControllerRepresentable {
             tag: 0)
         vcUsers.tabBarItem = usersTabBarItem
         
-        let communityView = CommunityListView(viewModel: self.communityViewModel)
+        let communityView = NavigationView {
+            CommunityListView(viewModel: self.communityViewModel)
+        }
         let vcCommunity = UIHostingController(rootView: communityView)
         let communityTabBarItem = UITabBarItem(
             title: "Группы",
@@ -61,7 +65,9 @@ struct MainTabBar: UIViewControllerRepresentable {
             tag: 1)
         vcCommunity.tabBarItem = communityTabBarItem
         
-        let newsView = NewsListView(viewModel: self.newsViewModel)
+        let newsView = NavigationView {
+            NewsListView(viewModel: self.newsViewModel)
+        }
         let vcNews = UIHostingController(rootView: newsView)
         let newsTabBarItem = UITabBarItem(
             title: "Новости",
