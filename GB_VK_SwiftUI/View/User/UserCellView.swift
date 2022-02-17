@@ -30,7 +30,7 @@ struct UserCellView: View {
                
                 Text("\(self.user.status.rawValue)")
                     .font(.subheadline)
-                    .statusColorModifire(status: self.user.status)
+                    .statusColorModifier(status: self.user.status)
             }
             Spacer()
         }

@@ -51,7 +51,7 @@ struct AvatarModifier: ViewModifier {
     }
 }
 
-struct StatusColorModifire: ViewModifier {
+struct StatusColorModifier: ViewModifier {
     let status: Status
     
     func body(content: Content) -> some View {

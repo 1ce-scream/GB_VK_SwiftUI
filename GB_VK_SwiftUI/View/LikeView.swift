@@ -54,5 +54,6 @@ struct LikeView_Previews: PreviewProvider {
                                       itemId: 1,
                                       type: "smth")
         LikeView(viewModel: viewModel)
+            .previewLayout(.sizeThatFits)
     }
 }

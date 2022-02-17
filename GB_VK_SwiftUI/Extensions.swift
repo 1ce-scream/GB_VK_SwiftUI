@@ -8,8 +8,8 @@
 import SwiftUI
 
 extension View {
-    func statusColorModifire(status: Status) -> some View {
-        self.modifier(StatusColorModifire(status: status))
+    func statusColorModifier(status: Status) -> some View {
+        self.modifier(StatusColorModifier(status: status))
     }
     
     func avatarTapAnimationModifier() -> some View {
