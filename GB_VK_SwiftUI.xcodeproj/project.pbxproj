@@ -45,6 +45,9 @@
 		FEC0D00727A1A92B00905751 /* CommunityCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0D00627A1A92B00905751 /* CommunityCellView.swift */; };
 		FEC0D00927A1BC2B00905751 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0D00827A1BC2B00905751 /* ViewModifiers.swift */; };
 		FEC0D00B27A1BCA700905751 /* ViewBuilders.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0D00A27A1BCA700905751 /* ViewBuilders.swift */; };
+		FEE9999027BE68B00042A676 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE9998F27BE68B00042A676 /* MainTabBarController.swift */; };
+		FEE9999327BE72730042A676 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE9999227BE72730042A676 /* MainCoordinator.swift */; };
+		FEE9999527BE74C10042A676 /* MainUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE9999427BE74C10042A676 /* MainUIKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +86,9 @@
 		FEC0D00627A1A92B00905751 /* CommunityCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellView.swift; sourceTree = "<group>"; };
 		FEC0D00827A1BC2B00905751 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		FEC0D00A27A1BCA700905751 /* ViewBuilders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuilders.swift; sourceTree = "<group>"; };
+		FEE9998F27BE68B00042A676 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		FEE9999227BE72730042A676 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		FEE9999427BE74C10042A676 /* MainUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUIKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,7 @@
 				FE21F90727AC0CB30027225E /* Extensions.swift */,
 				FE81873027B11DA30083C476 /* DateFormatter.swift */,
 				FE2ED4A927B5349D007DF53B /* CodingStyle.swift */,
+				FEE9999127BE725B0042A676 /* Coordinator */,
 				FE01FDC327B0178400715AC8 /* Services */,
 				FE21F8EC27ABFB470027225E /* Models */,
 				FE81872727B030690083C476 /* ViewModels */,
@@ -229,6 +236,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		FEE9999127BE725B0042A676 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				FEE9998F27BE68B00042A676 /* MainTabBarController.swift */,
+				FEE9999227BE72730042A676 /* MainCoordinator.swift */,
+				FEE9999427BE74C10042A676 /* MainUIKit.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -312,6 +329,7 @@
 			files = (
 				FE21F8F027ABFC2E0027225E /* Photo.swift in Sources */,
 				FE81872927B030860083C476 /* UserViewModel.swift in Sources */,
+				FEE9999027BE68B00042A676 /* MainTabBarController.swift in Sources */,
 				FE21F90227AC04910027225E /* MainView.swift in Sources */,
 				FE21F8F427ABFC7B0027225E /* Status.swift in Sources */,
 				FEC0D00927A1BC2B00905751 /* ViewModifiers.swift in Sources */,
@@ -322,10 +340,12 @@
 				FE134998279C36D200CD424A /* LoginScreenView.swift in Sources */,
 				FE81873327B11E4A0083C476 /* NewsViewModel.swift in Sources */,
 				FEC0D00B27A1BCA700905751 /* ViewBuilders.swift in Sources */,
+				FEE9999527BE74C10042A676 /* MainUIKit.swift in Sources */,
 				FE21F90427AC04E80027225E /* NewsListView.swift in Sources */,
 				FEC0D00527A1842300905751 /* UserCellView.swift in Sources */,
 				FE81872D27B0426C0083C476 /* CommunityViewModel.swift in Sources */,
 				FE21F8FA27AC00800027225E /* UserListView.swift in Sources */,
+				FEE9999327BE72730042A676 /* MainCoordinator.swift in Sources */,
 				FE2ED4AA27B5349D007DF53B /* CodingStyle.swift in Sources */,
 				FE21F8F227ABFC4A0027225E /* User.swift in Sources */,
 				FE01FDCC27B0217C00715AC8 /* NetworkConstants.swift in Sources */,
