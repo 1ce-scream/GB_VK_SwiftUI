@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FE01FDC527B0181C00715AC8 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE01FDC427B0181C00715AC8 /* NetworkService.swift */; };
-		FE01FDC827B01EEB00715AC8 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = FE01FDC727B01EEB00715AC8 /* Realm */; };
-		FE01FDCA27B01EEB00715AC8 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FE01FDC927B01EEB00715AC8 /* RealmSwift */; };
 		FE01FDCC27B0217C00715AC8 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE01FDCB27B0217C00715AC8 /* NetworkConstants.swift */; };
 		FE01FDCE27B021A200715AC8 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE01FDCD27B021A200715AC8 /* Session.swift */; };
 		FE01FDD027B021D700715AC8 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE01FDCF27B021D700715AC8 /* Response.swift */; };
@@ -91,8 +89,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE01FDD527B0286600715AC8 /* Kingfisher in Frameworks */,
-				FE01FDCA27B01EEB00715AC8 /* RealmSwift in Frameworks */,
-				FE01FDC827B01EEB00715AC8 /* Realm in Frameworks */,
 				FE21F8FF27AC02470027225E /* ASCollectionView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,8 +251,6 @@
 			name = GB_VK_SwiftUI;
 			packageProductDependencies = (
 				FE21F8FE27AC02470027225E /* ASCollectionView */,
-				FE01FDC727B01EEB00715AC8 /* Realm */,
-				FE01FDC927B01EEB00715AC8 /* RealmSwift */,
 				FE01FDD427B0286600715AC8 /* Kingfisher */,
 			);
 			productName = GB_VK_SwiftUI;
@@ -289,7 +283,6 @@
 			mainGroup = FE134989279C36D200CD424A;
 			packageReferences = (
 				FE21F8FD27AC02470027225E /* XCRemoteSwiftPackageReference "ASCollectionView" */,
-				FE01FDC627B01EEB00715AC8 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				FE01FDD327B0286600715AC8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = FE134993279C36D200CD424A /* Products */;
@@ -554,14 +547,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FE01FDC627B01EEB00715AC8 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.19.0;
-			};
-		};
 		FE01FDD327B0286600715AC8 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -581,16 +566,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FE01FDC727B01EEB00715AC8 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FE01FDC627B01EEB00715AC8 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		FE01FDC927B01EEB00715AC8 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FE01FDC627B01EEB00715AC8 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
 		FE01FDD427B0286600715AC8 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FE01FDD327B0286600715AC8 /* XCRemoteSwiftPackageReference "Kingfisher" */;
