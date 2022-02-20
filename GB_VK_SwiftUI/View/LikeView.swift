@@ -37,10 +37,7 @@ struct LikeView: View {
                         self.opacity = 1
                         self.degress = 360
                     }
-                    let dispatchTime = DispatchTime.now() + 1
-                    DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
-                        self.degress = 0
-                    }
+                    self.degress = 0
                 }
         }
     }

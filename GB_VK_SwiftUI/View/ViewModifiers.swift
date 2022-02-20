@@ -79,24 +79,10 @@ struct AvatarTapAnimationModifier: ViewModifier {
                 initialVelocity: 0.5), value: scale)
         
             .onTapGesture {
-                withAnimation(.linear(duration: 0.3)) {
-                    //уменьшение
-                    self.scale = 0.7
-                    
-                    //отпружинивание
-                    var dispatchTime = DispatchTime.now() + 0.7
-                    
-                    DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
-                        self.scale = 1.2
-                    }
-                    
-                    //возврат в исходное состояние немного попружинив
-                    dispatchTime = dispatchTime + 0.7
-                    
-                    DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
-                        self.scale = 1
-                    }
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    self.scale = 0.3
                 }
+                self.scale = 1.0
             }
     }
 }
