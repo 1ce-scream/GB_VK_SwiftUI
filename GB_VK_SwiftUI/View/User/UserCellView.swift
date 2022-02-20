@@ -34,7 +34,6 @@ struct UserCellView: View {
             }
             Spacer()
         }
-//        .border(Color.gray)
     }
 }
 

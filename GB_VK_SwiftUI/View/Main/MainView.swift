@@ -23,8 +23,6 @@ struct MainView: View {
 
 // MARK: - Properties
     
-//    @State private var selectedTab: Tabs = .friends
-    
     private var userViewModel = UserViewModel()
     private var communityViewModel = CommunityViewModel()
     private var newsViewModel = NewsViewModel()
@@ -33,12 +31,6 @@ struct MainView: View {
 // MARK: - Body
     
     var body: some View {
-        
-//        MainTabBar(userViewModel: self.userViewModel,
-//                   communityViewModel: self.communityViewModel,
-//                   newsViewModel: self.newsViewModel)
-//            .navigationBarBackButtonHidden(true)
-//            .ignoresSafeArea()
         
         UITabBarWrapper([
             TabBarElement(tabBarElementItem:
@@ -68,29 +60,6 @@ struct MainView: View {
             .ignoresSafeArea()
         
     }
-//        TabView(selection: $selectedTab) {
-//
-//            NavigationView {
-//                UsersListView(viewModel: userViewModel)
-//            }
-//            .tabItem { Label("Друзья", systemImage: "person.2.fill") }
-//            .tag(Tabs.friends)
-//
-//            NavigationView {
-//                CommunityListView(viewModel: communityViewModel)
-//            }
-//            .tabItem { Label("Группы", systemImage: "person.3.fill") }
-//            .tag(Tabs.groups)
-//
-//            NavigationView {
-//                NewsListView(viewModel: newsViewModel)
-//            }
-//            .tabItem { Label("Новости", systemImage: "newspaper.fill") }
-//            .tag(Tabs.news)
-//        }
-//        .navigationTitle(selectedTab.rawValue)
-//        .navigationBarBackButtonHidden(true)
-//    }
 }
 
 // MARK: - Previews

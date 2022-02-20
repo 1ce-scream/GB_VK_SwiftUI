@@ -19,24 +19,6 @@ class ResponseJoin: Codable {
     let response: Int
 }
 
-//class VKResponse<T:Codable>: Codable {
-//    let response: ResponseNews<T>
-//}
-
-//class ResponseNews<T: Codable>: Codable {
-//    let items: [T]
-//    let profiles: [User]?
-//    let groups: [Community]?
-//    let nextFrom: String?
-//
-//    enum CodingKeys: String, CodingKey {
-//        case items
-//        case profiles
-//        case groups
-//        case nextFrom = "next_from"
-//    }
-//}
-
 class ResponseNews: Codable {
     let response: ItemsNews
 }

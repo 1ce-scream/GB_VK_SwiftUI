@@ -188,119 +188,6 @@ class NetworkService {
         task.resume()
     }
     
-    /// Метод для выхода из группы
-//    func leaveCommunity(id: Int, onComplete: @escaping (Int) -> Void) {
-//        urlConstructor.path = "/method/groups.leave"
-//
-//        urlConstructor.queryItems = [
-//            URLQueryItem(name: "group_id", value: String(id)),
-//            URLQueryItem(name: "access_token", value: Session.shared.token),
-//            URLQueryItem(name: "v", value: constants.versionAPI),
-//        ]
-//
-//        let task = session.dataTask(with: urlConstructor.url!) {
-//            (responseData, urlResponse, error) in
-//
-//            if let response = urlResponse as? HTTPURLResponse {
-//                print(response.statusCode)
-//            }
-//
-//            guard
-//                error == nil,
-//                let data = responseData
-//            else { return }
-//
-//            guard
-//                let response = try? JSONDecoder().decode(
-//                    ResponseJoin.self,
-//                    from: data)
-//            else { return }
-//
-//            let objectsToDelete = try? RealmService.load(typeOf: Community.self)
-//                .filter("id = %f", id)
-//
-//            guard let item = objectsToDelete else { return }
-//            try? RealmService.delete(object: item)
-//
-//            DispatchQueue.main.async {
-//                onComplete(response.response)
-//            }
-//        }
-//        task.resume()
-//    }
-    
-    /// Метод для вступления в группу
-    func joinCommunity(id: Int, onComplete: @escaping (Int) -> Void) {
-        urlConstructor.path = "/method/groups.join"
-        
-        urlConstructor.queryItems = [
-            URLQueryItem(name: "group_id", value: String(id)),
-            URLQueryItem(name: "access_token", value: Session.shared.token),
-            URLQueryItem(name: "v", value: constants.versionAPI),
-        ]
-        
-        let task = session.dataTask(with: urlConstructor.url!) {
-            (responseData, urlResponse, error) in
-            
-            if let response = urlResponse as? HTTPURLResponse {
-                print(response.statusCode)
-            }
-            
-            guard
-                error == nil,
-                let data = responseData
-            else { return }
-            
-            guard
-                let response = try? JSONDecoder().decode(
-                    ResponseJoin.self,
-                    from: data)
-            else { return }
-            
-            DispatchQueue.main.async {
-                onComplete(response.response)
-            }
-        }
-        task.resume()
-    }
-    
-    /// Метод для поиска групп
-    func getSearchCommunity(text: String?,
-                            onComplete: @escaping ([Community])
-                            -> Void) {
-        
-        urlConstructor.path = "/method/groups.search"
-        
-        urlConstructor.queryItems = [
-            URLQueryItem(name: "q", value: text),
-            URLQueryItem(name: "access_token", value: Session.shared.token),
-            URLQueryItem(name: "v", value: constants.versionAPI),
-        ]
-        
-        let task = session.dataTask(with: urlConstructor.url!) {
-            (responseData, urlResponse, error) in
-            
-            if let response = urlResponse as? HTTPURLResponse {
-                print(response.statusCode)
-            }
-            
-            guard
-                error == nil,
-                let responseData = responseData
-            else { return }
-            
-            guard
-                let communities = try? JSONDecoder().decode(
-                    Response<Community>.self,
-                    from: responseData).response.items
-            else { return }
-            DispatchQueue.main.async {
-                onComplete(communities)
-            }
-        }
-        task.resume()
-    }
-    
     //MARK: - News
 
     func getNews(onComplete: @escaping ([NewsModel]) -> Void) {
@@ -334,9 +221,6 @@ class NetworkService {
 //                options: .fragmentsAllowed)
 
             guard
-//                let news = try? JSONDecoder().decode(
-//                    VKResponse<NewsModel>.self,
-//                    from: data).response.items
                 let news = try? JSONDecoder().decode(
                     Response<NewsModel>.self,
                     from: data).response.items
@@ -346,9 +230,6 @@ class NetworkService {
             }
 
             guard
-//                let profiles = try? JSONDecoder().decode(
-//                    VKResponse<NewsModel>.self,
-//                    from: data).response.profiles
                 let profiles = try? JSONDecoder().decode(
                     ResponseNews.self,
                     from: data).response.profiles
@@ -358,9 +239,6 @@ class NetworkService {
             }
 
             guard
-//                let groups = try? JSONDecoder().decode(
-//                    VKResponse<NewsModel>.self,
-//                    from: data).response.groups
                 let groups = try? JSONDecoder().decode(
                     ResponseNews.self,
                     from: data).response.groups
