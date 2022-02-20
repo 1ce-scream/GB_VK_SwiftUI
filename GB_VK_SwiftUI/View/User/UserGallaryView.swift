@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import ASCollectionView
 import Kingfisher
 
 struct UserGalleryView: View {
@@ -15,40 +14,47 @@ struct UserGalleryView: View {
 
     @ObservedObject var gallaryViewModel: UserGallaryViewModel
 
+    private let columns: [GridItem] = [
+        GridItem.init(.flexible(minimum: 0, maximum: .infinity)),
+        GridItem.init(.flexible(minimum: 0, maximum: .infinity)),
+        GridItem.init(.flexible(minimum: 0, maximum: .infinity))
+    ]
+    
     init(gallaryViewModel: UserGallaryViewModel) {
         self.gallaryViewModel = gallaryViewModel
     }
 
 // MARK: - Body
-
     var body: some View {
-        ASCollectionView(data: gallaryViewModel.photos) { photo, context in
+        ScrollView(.vertical) {
             
-            ZStack(alignment: .bottomTrailing) {
-               
-                KFImage(URL(string: photo.url))
-                    .resizable()
+            LazyVGrid(columns: columns, alignment: .center, spacing: 8) {
                 
-                LikeView(viewModel: LikeViewModel(
-                    countLike: photo.likesCount,
-                    isLiked2: photo.isLiked,
-                    ownerId: photo.ownerID,
-                    itemId: photo.id,
-                    type: "photo"))
-                    .background(
-                        RoundedRectangle(cornerRadius: 30,
-                                         style: .continuous)
-                            .fill(.blue)
-                            .opacity(0.5)
-                    )
+                ForEach(self.gallaryViewModel.photos) { photo in
+                    
+                    ZStack(alignment: .bottomTrailing) {
+                        
+                        KFImage(URL(string: photo.url))
+                            .cancelOnDisappear(true)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100, alignment: .center)
+                        
+                        LikeView(viewModel: LikeViewModel(
+                            countLike: photo.likesCount,
+                            isLiked2: photo.isLiked,
+                            ownerId: photo.ownerID,
+                            itemId: photo.id,
+                            type: "photo"))
+                            .background(
+                                RoundedRectangle(cornerRadius: 30,
+                                                 style: .continuous)
+                                    .fill(.blue)
+                                    .opacity(0.5)
+                            )
+                    }
+                }
             }
-        }
-        .layout {
-            .grid(
-                layoutMode: .adaptive(withMinItemSize: 100),
-                itemSpacing: 5,
-                lineSpacing: 5,
-                itemSize: .absolute(100))
         }
         .navigationTitle("Фото")
         .onAppear(perform: gallaryViewModel.getPhotos)

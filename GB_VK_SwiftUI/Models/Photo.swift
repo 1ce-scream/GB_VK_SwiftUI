@@ -36,8 +36,8 @@ class Size: Codable {
 }
 
 class Likes: Codable {
-    @objc dynamic var userLikes: Int = 0
-    @objc dynamic var count: Int = 0
+    var userLikes: Int = 0
+    var count: Int = 0
     
     enum CodingKeys: String, CodingKey {
         case userLikes = "user_likes"
