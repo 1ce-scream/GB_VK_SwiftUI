@@ -10,22 +10,18 @@ import SwiftUI
 
 struct MainTabBar: UIViewControllerRepresentable {
     
-    var userViewModel: UserViewModel
-    var communityViewModel: CommunityViewModel
-    var newsViewModel: NewsViewModel
+    var controllers: [UIViewController]
     
     func makeUIViewController(context: Context) -> some UIViewController {
         let controller = UITabBarController()
-        let controllers = setControllers()
         controller.viewControllers = controllers
         controller.delegate = context.coordinator
         
         return controller
     }
     
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        
-        let controllers = setControllers()
+    func updateUIViewController(_ uiViewController: UIViewControllerType,
+                                context: Context) {
         
         uiViewController.tabBarController?.setViewControllers(
             controllers,
@@ -43,40 +39,53 @@ struct MainTabBar: UIViewControllerRepresentable {
             mainTabBar = tabBarController
         }
     }
+}
+
+struct TabBarElementItem {
+    var title: String
+    var systemImageName: String
+}
+
+protocol TabBarElementView: View {
+    associatedtype Content
     
-    func setControllers() -> [UIViewController] {
-        let usersView = NavigationView {
-            UsersListView(viewModel: self.userViewModel)
+    var content: Content { get set }
+    var tabBarElementItem: TabBarElementItem { get set }
+}
+
+struct TabBarElement: TabBarElementView {
+    internal var content: AnyView
+    
+    var tabBarElementItem: TabBarElementItem
+    
+    init<Content: View>(tabBarElementItem: TabBarElementItem,
+    @ViewBuilder _ content: () -> Content) {
+        self.tabBarElementItem = tabBarElementItem
+        self.content = AnyView(content())
+    }
+    
+    var body: some View { self.content }
+}
+
+struct UITabBarWrapper: View {
+    var controllers: [UIHostingController<TabBarElement>]
+    
+    init(_ elements: [TabBarElement]) {
+        self.controllers = elements.enumerated().map {
+            let hostingController = UIHostingController(rootView: $1)
+            
+            hostingController.tabBarItem = UITabBarItem(
+                title: $1.tabBarElementItem.title,
+                image: UIImage.init(
+                    systemName: $1.tabBarElementItem.systemImageName),
+                tag: $0
+            )
+            
+            return hostingController
         }
-        let vcUsers = UIHostingController(rootView: usersView)
-        let usersTabBarItem = UITabBarItem(
-            title: "Друзья",
-            image: UIImage(systemName: "person.2.fill"),
-            tag: 0)
-        vcUsers.tabBarItem = usersTabBarItem
-        
-        let communityView = NavigationView {
-            CommunityListView(viewModel: self.communityViewModel)
-        }
-        let vcCommunity = UIHostingController(rootView: communityView)
-        let communityTabBarItem = UITabBarItem(
-            title: "Группы",
-            image: UIImage(systemName: "person.3.fill"),
-            tag: 1)
-        vcCommunity.tabBarItem = communityTabBarItem
-        
-        let newsView = NavigationView {
-            NewsListView(viewModel: self.newsViewModel)
-        }
-        let vcNews = UIHostingController(rootView: newsView)
-        let newsTabBarItem = UITabBarItem(
-            title: "Новости",
-            image: UIImage(systemName: "newspaper.fill"),
-            tag: 2)
-        vcNews.tabBarItem = newsTabBarItem
-        
-        let controllers = [vcUsers, vcCommunity, vcNews]
-        
-        return controllers
+    }
+    
+    var body: some View {
+        MainTabBar(controllers: self.controllers)
     }
 }

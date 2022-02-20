@@ -13,6 +13,12 @@ enum Tabs: String {
     case news = "Новости"
 }
 
+enum Icon: String {
+    case friends = "person.2.fill"
+    case group = "person.3.fill"
+    case news = "newspaper.fill"
+}
+
 struct MainView: View {
 
 // MARK: - Properties
@@ -23,16 +29,41 @@ struct MainView: View {
     private var communityViewModel = CommunityViewModel()
     private var newsViewModel = NewsViewModel()
 
-//    private let networkService = NetworkService()
-    
     
 // MARK: - Body
     
     var body: some View {
         
-        MainTabBar(userViewModel: self.userViewModel,
-                   communityViewModel: self.communityViewModel,
-                   newsViewModel: self.newsViewModel)
+//        MainTabBar(userViewModel: self.userViewModel,
+//                   communityViewModel: self.communityViewModel,
+//                   newsViewModel: self.newsViewModel)
+//            .navigationBarBackButtonHidden(true)
+//            .ignoresSafeArea()
+        
+        UITabBarWrapper([
+            TabBarElement(tabBarElementItem:
+                                .init(title: Tabs.friends.rawValue,
+                                      systemImageName: Icon.friends.rawValue)) {
+                                          NavigationView {
+                                              UsersListView(viewModel: self.userViewModel)
+                                          }
+                                      },
+            TabBarElement(tabBarElementItem:
+                                .init(title: Tabs.groups.rawValue,
+                                      systemImageName: Icon.group.rawValue)) {
+                                          NavigationView {
+                                              CommunityListView(viewModel:
+                                                            self.communityViewModel)
+                                          }
+                                      },
+            TabBarElement(tabBarElementItem:
+                                .init(title: Tabs.news.rawValue,
+                                      systemImageName: Icon.news.rawValue)) {
+                                          NavigationView {
+                                              NewsListView(viewModel: self.newsViewModel)
+                                          }
+                                      },
+        ])
             .navigationBarBackButtonHidden(true)
             .ignoresSafeArea()
         

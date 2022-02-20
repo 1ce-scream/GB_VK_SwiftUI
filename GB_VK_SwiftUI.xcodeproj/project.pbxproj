@@ -13,7 +13,6 @@
 		FE01FDCC27B0217C00715AC8 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE01FDCB27B0217C00715AC8 /* NetworkConstants.swift */; };
 		FE01FDCE27B021A200715AC8 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE01FDCD27B021A200715AC8 /* Session.swift */; };
 		FE01FDD027B021D700715AC8 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE01FDCF27B021D700715AC8 /* Response.swift */; };
-		FE01FDD227B0221200715AC8 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE01FDD127B0221200715AC8 /* RealmService.swift */; };
 		FE01FDD527B0286600715AC8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FE01FDD427B0286600715AC8 /* Kingfisher */; };
 		FE134996279C36D200CD424A /* GB_VK_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE134995279C36D200CD424A /* GB_VK_SwiftUIApp.swift */; };
 		FE134998279C36D200CD424A /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE134997279C36D200CD424A /* LoginScreenView.swift */; };
@@ -53,7 +52,6 @@
 		FE01FDCB27B0217C00715AC8 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		FE01FDCD27B021A200715AC8 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		FE01FDCF27B021D700715AC8 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
-		FE01FDD127B0221200715AC8 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		FE134992279C36D200CD424A /* GB_VK_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GB_VK_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE134995279C36D200CD424A /* GB_VK_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GB_VK_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FE134997279C36D200CD424A /* LoginScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 				FE01FDCB27B0217C00715AC8 /* NetworkConstants.swift */,
 				FE01FDCF27B021D700715AC8 /* Response.swift */,
 				FE01FDCD27B021A200715AC8 /* Session.swift */,
-				FE01FDD127B0221200715AC8 /* RealmService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -328,7 +325,6 @@
 				FE21F8F427ABFC7B0027225E /* Status.swift in Sources */,
 				FEC0D00927A1BC2B00905751 /* ViewModifiers.swift in Sources */,
 				FE21F8F627ABFCE90027225E /* CommunityListView.swift in Sources */,
-				FE01FDD227B0221200715AC8 /* RealmService.swift in Sources */,
 				FE21F90D27AC15250027225E /* NewsCellView.swift in Sources */,
 				FEA5CDD727B93DF800205B7C /* LikeView.swift in Sources */,
 				FE134998279C36D200CD424A /* LoginScreenView.swift in Sources */,
