@@ -89,3 +89,5 @@ struct UITabBarWrapper: View {
         MainTabBar(controllers: self.controllers)
     }
 }
+
+// Made with https://betterprogramming.pub/working-around-the-shortfalls-of-swiftuis-tabview-ac9aa2a9d894
