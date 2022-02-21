@@ -7,14 +7,24 @@
 
 import UIKit
 
-class NewsModel: Codable, Identifiable {
-    let postID: Int
-    let text: String
-    let date: Double
-    let attachments: [Attachment]?
-    let likes: LikeModel
-    let sourceID: Int
-    let views: ViewsModel
+struct NewsResponse: Codable {
+    var items: NewsItems
+    var profiles: NewsProfiles
+    var groups: NewsCommunity
+    
+    enum CodingKeys: String, CodingKey {
+        case items, profiles, groups
+    }
+}
+
+struct NewsModel: Codable, Identifiable {
+    var id: Int
+    var text: String
+    var date: Double
+    var attachments: [Attachment]?
+    var likes: LikeModel
+    var sourceID: Int
+    var views: ViewsModel
     var avatarURL: String?
     var creatorName: String?
     var photosURL: [String]? {
@@ -25,7 +35,7 @@ class NewsModel: Codable, Identifiable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case postID = "post_id"
+        case id = "post_id"
         case text
         case date
         case likes
@@ -42,14 +52,14 @@ class NewsModel: Codable, Identifiable {
     }
 }
 
-class Attachment: Codable {
-    let type: String?
-    let photo: PhotoNews?
+struct Attachment: Codable {
+    var type: String?
+    var photo: PhotoNews?
 }
 
-class LikeModel: Codable {
-    let count: Int
-    let userLike: Int
+struct LikeModel: Codable {
+    var count: Int
+    var userLike: Int
     
     enum CodingKeys: String, CodingKey {
         case count
@@ -57,14 +67,14 @@ class LikeModel: Codable {
     }
 }
 
-class ViewsModel: Codable {
-    let count: Int
+struct ViewsModel: Codable {
+    var count: Int
 }
 
-class PhotoNews: Codable {
-    let id: Int?
-    let ownerID: Int?
-    let sizes: [SizeNews]?
+struct PhotoNews: Codable {
+    var id: Int?
+    var ownerID: Int?
+    var sizes: [SizeNews]?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -73,10 +83,22 @@ class PhotoNews: Codable {
     }
 }
 
-class SizeNews: Codable {
-    let type: String?
-    let url: String?
+struct SizeNews: Codable {
+    var type: String?
+    var url: String?
     var width: Double
     var height: Double
     var aspectRatio: CGFloat { width / height }
+}
+
+struct NewsProfiles: Codable {
+    var profiles: [User]
+}
+
+struct NewsCommunity: Codable {
+    var groups: [Community]
+}
+
+struct NewsItems: Codable {
+    var items: [NewsModel]
 }

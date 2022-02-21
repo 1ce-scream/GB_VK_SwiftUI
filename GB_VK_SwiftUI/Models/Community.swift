@@ -7,11 +7,15 @@
 
 import Foundation
 
-class Community: Codable, Identifiable {
+struct CommunityItems: Codable {
+    var items: [Community]
+}
+
+struct Community: Codable, Identifiable {
     var id: Int
     var name: String
-    var photo200: String?
-    var description: String
+    var photo200: String
+    var description: String?
     
     enum CodingKeys: String, CodingKey {
         case id

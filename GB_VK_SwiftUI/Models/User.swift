@@ -7,7 +7,11 @@
 
 import Foundation
 
-class User: Codable, Identifiable {
+struct UserItems: Codable {
+    var items: [User]
+}
+
+struct User: Codable, Identifiable {
     var id: Int
     var firstName: String
     var lastName: String

@@ -7,12 +7,15 @@
 
 import Foundation
 
-class Photo: Codable, Identifiable {
+struct PhotoItems: Codable {
+    var items: [Photo]
+}
+
+struct Photo: Codable, Identifiable {
     var id: Int
     var ownerID: Int
     var likesCount: Int = 0
     var isLiked: Int = 0
-    var url: String = ""
     
     var sizes: [Size]
     var likes: Likes? = nil
@@ -25,7 +28,7 @@ class Photo: Codable, Identifiable {
     
 }
 
-class Size: Codable {
+struct Size: Codable {
     var type: String = ""
     var url: String = ""
     
@@ -35,7 +38,7 @@ class Size: Codable {
     }
 }
 
-class Likes: Codable {
+struct Likes: Codable {
     var userLikes: Int = 0
     var count: Int = 0
     

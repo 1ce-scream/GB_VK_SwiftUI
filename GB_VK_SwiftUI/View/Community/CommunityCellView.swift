@@ -21,7 +21,7 @@ struct CommunityCellView: View {
             HStack {
                 
                 KFAvatarImage {
-                    KFImage(URL(string:self.community.photo200!)!)
+                    KFImage(URL(string:self.community.photo200)!)
                 }
                 
                 Text("\(self.community.name)")
@@ -30,7 +30,7 @@ struct CommunityCellView: View {
                 Spacer()
             }
             
-            Text("\(self.community.description)")
+            Text("\(self.community.description!)")
                 .font(.subheadline)
                 .fixedSize(horizontal: false, vertical: true)
         }

@@ -15,6 +15,16 @@ extension View {
     func avatarTapAnimationModifier() -> some View {
         self.modifier(AvatarTapAnimationModifier())
     }
+    
+    @ViewBuilder func isHidden(_ hidden: Bool, remove: Bool = false) -> some View {
+        if hidden {
+            if !remove {
+                self.hidden()
+            }
+        } else {
+            self
+        }
+    }
 }
 
 extension UIApplication {

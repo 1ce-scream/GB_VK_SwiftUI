@@ -13,6 +13,9 @@ struct NewsCellView: View {
 // MARK: - Properties
 
     let news: NewsModel
+    
+//    @State var shouldShowText: Bool = false
+//    @State var shouldShowPhoto: Bool = false
 
 // MARK: - Body
     
@@ -35,17 +38,25 @@ struct NewsCellView: View {
                 
                 Spacer()
             }
-            
+                
             Text(self.news.text)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.bottom, 5)
+                .isHidden(self.news.text == "" ,
+                          remove: self.news.text == "")
+            
+            KFImage(URL(string:(self.news.photosURL?.first) ?? ""))
+                .resizable()
+                .aspectRatio(1, contentMode: .fit)
+                .isHidden(self.news.photosURL?.first == "" ? true : false,
+                          remove: self.news.photosURL?.first == "" ? true : false)
             
             BottomNewsView(
                 likeCounter: news.likes.count,
                 viewsCounter: news.views.count,
                 isLiked: news.likes.userLike,
                 ownerId: news.sourceID,
-                itemId: news.postID)
+                itemId: news.id)
         }
     }
 }

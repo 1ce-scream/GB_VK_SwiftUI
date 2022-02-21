@@ -68,10 +68,10 @@ class NetworkService {
             
             do {
                 let friends = try JSONDecoder().decode(
-                    Response<User>.self,
-                    from: responseData).response.items
+                    Response<UserItems>.self,
+                    from: responseData)
                 DispatchQueue.main.async {
-                    onComplete(friends)
+                    onComplete(friends.response.items)
                 }
             } catch {
                 print ("Smth wrong with decoder")
@@ -109,18 +109,12 @@ class NetworkService {
             else { return }
 
             guard let photos = try? JSONDecoder().decode(
-                Response<Photo>.self,
-                from: responseData).response.items
+                Response<PhotoItems>.self,
+                from: responseData)
             else { return }
 
-            photos.forEach {
-                $0.url = $0.sizes.first?.url ?? ""
-                $0.likesCount = $0.likes?.count ?? 0
-                $0.isLiked = $0.likes?.userLikes ?? 0
-            }
-
             DispatchQueue.main.async {
-                onComplete(photos)
+                onComplete(photos.response.items)
             }
         }
         task.resume()
@@ -177,12 +171,12 @@ class NetworkService {
             else { return }
             
             guard let communities = try? JSONDecoder().decode(
-                Response<Community>.self,
-                from: responseData).response.items
+                Response<CommunityItems>.self,
+                from: responseData)
             else { return }
             
             DispatchQueue.main.async {
-                onComplete(communities)
+                onComplete(communities.response.items)
             }
         }
         task.resume()
@@ -190,13 +184,12 @@ class NetworkService {
     
     //MARK: - News
 
-    func getNews(onComplete: @escaping ([NewsModel]) -> Void) {
+    func getNews(onComplete: @escaping (NewsResponse) -> Void) {
 
         urlConstructor.path = "/method/newsfeed.get"
 
         urlConstructor.queryItems = [
             URLQueryItem(name: "filters", value: "post"),
-            URLQueryItem(name: "start_from", value: "next_from"),
             URLQueryItem(name: "count", value: "20"),
             URLQueryItem(name: "access_token", value: Session.shared.token),
             URLQueryItem(name: "v", value: constants.versionAPI),
@@ -215,55 +208,44 @@ class NetworkService {
                 let data = responseData
             else { return }
 
-
-//            let json = try? JSONSerialization.jsonObject(
-//                with: data,
-//                options: .fragmentsAllowed)
-
-            guard
-                let news = try? JSONDecoder().decode(
-                    Response<NewsModel>.self,
-                    from: data).response.items
-            else {
-                print("News Error")
-                return
-            }
-
-            guard
-                let profiles = try? JSONDecoder().decode(
-                    ResponseNews.self,
-                    from: data).response.profiles
-            else {
-                print("Profiles error")
-                return
-            }
-
-            guard
-                let groups = try? JSONDecoder().decode(
-                    ResponseNews.self,
-                    from: data).response.groups
-            else {
-                print("Groups error")
-                return
-            }
-
-            for i in 0..<news.count {
-                if news[i].sourceID < 0 {
-                    let group = groups.first(
-                        where: { $0.id == -news[i].sourceID })
-                    news[i].avatarURL = group?.avatarURL
-                    news[i].creatorName = group?.name
-                } else {
-                    let profile = profiles.first(
-                        where: { $0.id == news[i].sourceID })
-                    news[i].avatarURL = profile?.avatarURL
-                    news[i].creatorName = profile?.firstName
+            let dispGroup = DispatchGroup()
+            var newsList = NewsItems(items: [NewsModel]())
+            var newsProfile = NewsProfiles(profiles: [User]())
+            var newsCommunity = NewsCommunity(groups: [Community]())
+            
+            DispatchQueue.global().async(group: dispGroup) {
+                do {
+                    newsList = try JSONDecoder()
+                        .decode(Response<NewsItems>.self, from: data).response
+                    
+                    newsProfile = try JSONDecoder()
+                        .decode(Response<NewsProfiles>.self, from: data).response
+                    
+                    newsCommunity = try JSONDecoder()
+                        .decode(Response<NewsCommunity>.self, from: data).response
+                    
+                } catch let DecodingError.dataCorrupted(context) {
+                    print(context)
+                } catch let DecodingError.keyNotFound(key, context) {
+                    print("Key '\(key)' not found:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                } catch let DecodingError.valueNotFound(value, context) {
+                    print("Value '\(value)' not found:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                } catch let DecodingError.typeMismatch(type, context)  {
+                    print("Type '\(type)' mismatch:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                } catch {
+                    print("error: ", error)
                 }
             }
-
-            DispatchQueue.main.async {
-                onComplete(news)
-//                print(json)
+            
+            dispGroup.notify(queue: .main) {
+                onComplete(NewsResponse(
+                    items: newsList,
+                    profiles: newsProfile,
+                    groups: newsCommunity
+                ))
             }
         }
         task.resume()

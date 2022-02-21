@@ -34,7 +34,7 @@ struct UserGalleryView: View {
                     
                     ZStack(alignment: .bottomTrailing) {
                         
-                        KFImage(URL(string: photo.url))
+                        KFImage(URL(string: photo.sizes.first!.url))
                             .cancelOnDisappear(true)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
