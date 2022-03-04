@@ -13,7 +13,7 @@ class UserGallaryViewModel: ObservableObject {
     
     @Published var photos: [Photo] = []
     var userID: Int
-    private let networkService = NetworkService()
+    private lazy var networkService = NetworkService()
     
     init(userID: Int) {
         self.userID = userID

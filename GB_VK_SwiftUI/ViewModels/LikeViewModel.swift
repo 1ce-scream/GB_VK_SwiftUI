@@ -17,7 +17,7 @@ class LikeViewModel: ObservableObject {
     private var itemId: Int
     private var type: String
     
-    private let networkService = NetworkService()
+    private lazy var networkService = NetworkService()
     
     init(countLike: Int, isLiked2: Int, ownerId: Int, itemId: Int, type: String) {
         self.countLike = countLike

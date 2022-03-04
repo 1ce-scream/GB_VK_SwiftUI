@@ -13,7 +13,7 @@ class UserViewModel: ObservableObject {
     
     @Published var users: [User] = []
     
-    private let networkService = NetworkService()
+    private lazy var networkService = NetworkService()
     
     func getUsers() {
         networkService.getFriends() { users in

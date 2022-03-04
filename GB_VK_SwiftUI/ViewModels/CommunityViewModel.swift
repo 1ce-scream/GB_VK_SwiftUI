@@ -14,7 +14,7 @@ class CommunityViewModel: ObservableObject {
     var communities: [Community] = []
     
     internal let objectWillChange = ObjectWillChangePublisher()
-    private let networkService = NetworkService()
+    private lazy var networkService = NetworkService()
     
     func getCommunities() {
         networkService.getCommunities() { [self] communities in

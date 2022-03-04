@@ -12,7 +12,7 @@ class NewsViewModel: ObservableObject {
     
     @Published var news: [NewsModel] = []
     
-    private let networkService = NetworkService()
+    private lazy var networkService = NetworkService()
     
     func getNews() {
         networkService.getNews() { newsResponse in

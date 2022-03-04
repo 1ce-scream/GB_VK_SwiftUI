@@ -29,8 +29,8 @@ struct Photo: Codable, Identifiable {
 }
 
 struct Size: Codable {
-    var type: String = ""
-    var url: String = ""
+    var type: String
+    var url: String
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -39,8 +39,8 @@ struct Size: Codable {
 }
 
 struct Likes: Codable {
-    var userLikes: Int = 0
-    var count: Int = 0
+    var userLikes: Int
+    var count: Int
     
     enum CodingKeys: String, CodingKey {
         case userLikes = "user_likes"
